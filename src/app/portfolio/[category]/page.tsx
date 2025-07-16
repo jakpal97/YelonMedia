@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, use } from 'react'
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -326,10 +326,11 @@ const categoryData = {
 	},
 }
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
+export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
 	const [selectedImage, setSelectedImage] = useState<ImageData | null>(null)
+	const resolvedParams = use(params)
 	const categoryDataMap = categoryData as Record<string, CategoryData>
-	const currentCategory = categoryDataMap[params.category]
+	const currentCategory = categoryDataMap[resolvedParams.category]
 
 	// Sprawdzenie czy kategoria istnieje
 	if (!currentCategory) {
