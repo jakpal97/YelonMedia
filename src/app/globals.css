@@ -6,6 +6,8 @@
 @layer base {
 	html {
 		scroll-behavior: smooth;
+		/* Zwiększona płynność scroll */
+		scroll-padding-top: 80px;
 	}
 
 	body {
@@ -16,6 +18,9 @@
 		position: relative;
 		font-weight: 400;
 		font-style: normal;
+		/* Optymalizacja dla smooth scroll */
+		overscroll-behavior: smooth;
+		scroll-snap-type: y proximity;
 	}
 
 	/* Dodatkowy gradient overlay dla większej widoczności */
@@ -44,6 +49,17 @@
 	/* Definicja CSS variables dla czcionek */
 	:root {
 		--font-main: var(--font-playfair);
+	}
+
+	/* Smooth scroll dla sekcji */
+	section {
+		scroll-snap-align: start;
+		scroll-margin-top: 80px;
+	}
+
+	/* Optymalizacja CSS dla lepszego scrollowania */
+	* {
+		-webkit-overflow-scrolling: touch;
 	}
 }
 
@@ -104,6 +120,12 @@
 
 	.hover-accent:hover {
 		color: #6da5c0;
+	}
+
+	/* Smooth scroll enhancement class */
+	.smooth-scroll-enhanced {
+		scroll-behavior: smooth;
+		transition: scroll-behavior 0.3s ease;
 	}
 
 	/* Klasy utility dla eleganckich fontów - aktualizowane */
