@@ -72,6 +72,9 @@ export default function RootLayout({
 			<head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+				<link rel="preconnect" href="https://yelonmedia.s3.us-east-1.amazonaws.com" />
+				<link rel="dns-prefetch" href="https://yelonmedia.s3.us-east-1.amazonaws.com" />
+				<link rel="preload" href="https://yelonmedia.s3.us-east-1.amazonaws.com/Model3D/scene.gltf" as="fetch" crossOrigin="anonymous" />
 
 				{/* Krytyczny CSS już zaimportowany jako moduł */}
 

@@ -23,8 +23,32 @@ const Camera3D = () => {
 		tailDirection: 'bottom',
 	})
 	const [error, setError] = useState<string | null>(null)
+	const [isInViewport, setIsInViewport] = useState(false)
+
+	// Intersection Observer dla lazy loading
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						setIsInViewport(true)
+						observer.disconnect()
+					}
+				})
+			},
+			{ threshold: 0.1 }
+		)
+
+		if (containerRef.current) {
+			observer.observe(containerRef.current)
+		}
+
+		return () => observer.disconnect()
+	}, [])
 
 	useEffect(() => {
+		if (!isInViewport) return // Nie ładuj dopóki nie jest widoczny
+
 		let mounted = true
 		let animationFrameId: number
 		let scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer, model: Object3D
@@ -471,7 +495,7 @@ const Camera3D = () => {
 			mounted = false
 			cleanup()
 		}
-	}, [])
+	}, [isInViewport])
 
 	if (error) {
 		return (
