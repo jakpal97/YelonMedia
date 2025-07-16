@@ -1,16 +1,21 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+	// Optymalizacja kompilera
 	compiler: {
-		styledComponents: true,
+		removeConsole: process.env.NODE_ENV === 'production',
 	},
 
-	// Podstawowa optymalizacja obrazów
+	// Agresywna optymalizacja obrazów
 	images: {
 		domains: ['yelonmedia.s3.us-east-1.amazonaws.com', 'images.unsplash.com'],
+		formats: ['image/webp'],
+		deviceSizes: [640, 828, 1200],
+		imageSizes: [32, 64, 128],
+		minimumCacheTTL: 86400,
 	},
 
-	// Wymuś odświeżenie cache
+	// Tymczasowe wyłączenie cache (usuń po naprawie)
 	headers: async () => {
 		return [
 			{
@@ -20,20 +25,44 @@ const nextConfig: NextConfig = {
 						key: 'Cache-Control',
 						value: 'no-cache, no-store, must-revalidate',
 					},
-					{
-						key: 'Pragma',
-						value: 'no-cache',
-					},
-					{
-						key: 'Expires',
-						value: '0',
-					},
 				],
 			},
 		]
 	},
 
-	// Dodatkowe ustawienia dla wymuszenia rebuildu
+	// Optymalizacja bundle
+	experimental: {
+		optimizePackageImports: ['three', 'lucide-react'],
+	},
+
+	// Webpack optymalizacje
+	webpack: (config, { isServer }) => {
+		// Tree shaking dla Three.js
+		config.optimization.usedExports = true
+		config.optimization.sideEffects = false
+
+		// Code splitting
+		if (!isServer) {
+			config.optimization.splitChunks = {
+				chunks: 'all',
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendors',
+						chunks: 'all',
+					},
+					three: {
+						test: /[\\/]node_modules[\\/]three[\\/]/,
+						name: 'three',
+						chunks: 'async',
+					},
+				},
+			}
+		}
+
+		return config
+	},
+
 	generateEtags: false,
 	poweredByHeader: false,
 }

@@ -1,24 +1,29 @@
 import type { Metadata } from 'next'
 import { Poppins, Playfair_Display, Courier_Prime } from 'next/font/google'
-import Script from 'next/script'
 import './globals.css'
 
 const poppins = Poppins({
 	subsets: ['latin'],
-	weight: ['400', '500', '600'],
+	weight: ['400', '500'],
 	variable: '--font-poppins',
+	display: 'swap',
+	preload: true,
 })
 
 const playfairDisplay = Playfair_Display({
 	subsets: ['latin'],
-	weight: ['400', '600', '700'],
+	weight: ['400', '600'],
 	variable: '--font-playfair',
+	display: 'swap',
+	preload: true,
 })
 
 const courierPrime = Courier_Prime({
 	subsets: ['latin'],
 	weight: ['400'],
 	variable: '--font-courier-prime',
+	display: 'swap',
+	preload: true,
 })
 
 // Ustaw Playfair Display jako główny font elegancki
@@ -60,14 +65,17 @@ export default function RootLayout({
 			<head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+				{/* Preload krytycznych zasobów */}
+				<link rel="preload" href="/logoyelon.png" as="image" type="image/png" />
+
+				{/* DNS prefetch dla zewnętrznych domen */}
+				<link rel="dns-prefetch" href="https://yelonmedia.s3.us-east-1.amazonaws.com" />
 			</head>
 			<body
 				className={`${playfairDisplay.className} bg-stone-900 text-stone-100 overflow-x-hidden`}
 				style={{ fontFamily: 'Courier Prime, monospace', fontWeight: 400, fontStyle: 'normal' }}>
 				{children}
-
-				{/* Tymczasowy skrypt do czyszczenia cache */}
-				<Script src="/sw-clear.js" strategy="afterInteractive" />
 			</body>
 		</html>
 	)

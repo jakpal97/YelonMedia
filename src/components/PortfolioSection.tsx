@@ -274,23 +274,15 @@ const PortfolioSection = () => {
 								key={image.id}
 								className="group relative overflow-hidden rounded-2xl bg-stone-800 shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer h-[300px]">
 								<div className="relative h-full">
-									{image.src.includes('yelonmedia.s3') ? (
-										<Image
-											src={image.src}
-											alt={image.title}
-											fill
-											className="object-cover transition-all duration-700 group-hover:scale-110"
-											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-										/>
-									) : (
-										<Image
-											src={image.src}
-											alt={image.title}
-											fill
-											className="object-cover transition-all duration-700 group-hover:scale-110"
-											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-										/>
-									)}
+									<Image
+										src={image.src}
+										alt={image.title}
+										fill
+										className="object-cover transition-all duration-700 group-hover:scale-110"
+										sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 25vw"
+										loading="lazy"
+										quality={75}
+									/>
 								</div>
 
 								{/* Gradient overlay */}
