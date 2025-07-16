@@ -132,7 +132,7 @@ const Camera3D = () => {
 					PCFSoftShadowMap,
 					MeshStandardMaterial,
 				} = await import('three')
-				const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js')
+				const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js')
 
 				if (!mounted || !containerRef.current) return
 
@@ -285,80 +285,120 @@ const Camera3D = () => {
 					renderer.render(scene, camera)
 				}
 
-				// Load model - nowy model aparatu
-				const loader = new GLTFLoader()
-				console.log('🚀 Loading new camera model: /models/scene.gltf')
-				loader.load(
-					'/models/scene.gltf',
-					gltf => {
-						if (!mounted) return
+				// Funkcja fallback dla modelu
+				const showModelFallback = () => {
+					if (!container.parentNode) return
 
-						model = gltf.scene
+					const fallbackDiv = document.createElement('div')
+					fallbackDiv.innerHTML = `
+						<div style="
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							height: 100%;
+							color: #6da5c0;
+							font-size: 18px;
+							text-align: center;
+							padding: 20px;
+							background: rgba(0,0,0,0.1);
+							border-radius: 12px;
+							border: 1px solid rgba(109, 165, 192, 0.2);
+						">
+							<div>
+								<div style="font-size: 48px; margin-bottom: 16px;">📷</div>
+								<div>Model 3D aparatu</div>
+								<div style="font-size: 14px; opacity: 0.7; margin-top: 8px;">
+									Niedostępny w tej przeglądarce
+								</div>
+							</div>
+						</div>
+					`
+					container.appendChild(fallbackDiv)
+					setIsLoading(false)
+				}
 
-						// PROSTE pozycjonowanie - bez żadnych obrotów
-						model.position.set(0, 0, 0)
-						model.rotation.set(0, 0, 0) // ZEROWE obroty - naturalna orientacja
-						model.scale.set(1, 1, 1)
+				// Load model - nowy model aparatu z fallbackiem
+				try {
+					const loader = new GLTFLoader()
+					console.log('🚀 Loading new camera model: /models/scene.gltf')
+					loader.load(
+						'/models/scene.gltf',
+						gltf => {
+							if (!mounted) return
 
-						// Znajdź bounding box modelu
-						const box = new Box3().setFromObject(model)
-						const size = box.getSize(new Vector3())
+							model = gltf.scene
 
-						// Skaluj model żeby był większy i lepiej widoczny
-						const maxSize = Math.max(size.x, size.y, size.z)
+							// PROSTE pozycjonowanie - bez żadnych obrotów
+							model.position.set(0, 0, 0)
+							model.rotation.set(0, 0, 0) // ZEROWE obroty - naturalna orientacja
+							model.scale.set(1, 1, 1)
 
-						if (maxSize > 0) {
-							const scale = 5 / maxSize // Zwiększona skala z 2 na 5
-							model.scale.setScalar(scale)
-						} else {
-							model.scale.setScalar(0.3) // Zwiększona skala fallback z 0.1 na 0.3
-						}
+							// Znajdź bounding box modelu
+							const box = new Box3().setFromObject(model)
+							const size = box.getSize(new Vector3())
 
-						// Wycentruj model po skalowaniu
-						const scaledBox = new Box3().setFromObject(model)
-						const scaledCenter = scaledBox.getCenter(new Vector3())
-						model.position.copy(scaledCenter).multiplyScalar(-1)
+							// Skaluj model żeby był większy i lepiej widoczny
+							const maxSize = Math.max(size.x, size.y, size.z)
 
-						// Popraw materiały - jaśniejsze i bardziej refleksyjne
-						model.traverse((child: Object3D) => {
-							if ('isMesh' in child && child.isMesh) {
-								const mesh = child as THREE.Mesh
-								mesh.castShadow = true
-								mesh.receiveShadow = true
+							if (maxSize > 0) {
+								const scale = 5 / maxSize // Zwiększona skala z 2 na 5
+								model.scale.setScalar(scale)
+							} else {
+								model.scale.setScalar(0.3) // Zwiększona skala fallback z 0.1 na 0.3
+							}
 
-								if (mesh.material) {
-									if (Array.isArray(mesh.material)) {
-										mesh.material.forEach(mat => {
-											if (mat instanceof MeshStandardMaterial) {
-												mat.metalness = 0.6 // Zwiększone z 0.3 - bardziej metaliczny
-												mat.roughness = 0.4 // Zmniejszone z 0.7 - bardziej gładki/refleksyjny
-												mat.envMapIntensity = 1.5 // Więcej refleksji środowiska
-												mat.needsUpdate = true
-											}
-										})
-									} else if (mesh.material instanceof MeshStandardMaterial) {
-										mesh.material.metalness = 0.6
-										mesh.material.roughness = 0.4
-										mesh.material.envMapIntensity = 1.5
-										mesh.material.needsUpdate = true
+							// Wycentruj model po skalowaniu
+							const scaledBox = new Box3().setFromObject(model)
+							const scaledCenter = scaledBox.getCenter(new Vector3())
+							model.position.copy(scaledCenter).multiplyScalar(-1)
+
+							// Popraw materiały - jaśniejsze i bardziej refleksyjne
+							model.traverse((child: Object3D) => {
+								if ('isMesh' in child && child.isMesh) {
+									const mesh = child as THREE.Mesh
+									mesh.castShadow = true
+									mesh.receiveShadow = true
+
+									if (mesh.material) {
+										if (Array.isArray(mesh.material)) {
+											mesh.material.forEach(mat => {
+												if (mat instanceof MeshStandardMaterial) {
+													mat.metalness = 0.6 // Zwiększone z 0.3 - bardziej metaliczny
+													mat.roughness = 0.4 // Zmniejszone z 0.7 - bardziej gładki/refleksyjny
+													mat.envMapIntensity = 1.5 // Więcej refleksji środowiska
+													mat.needsUpdate = true
+												}
+											})
+										} else if (mesh.material instanceof MeshStandardMaterial) {
+											mesh.material.metalness = 0.6
+											mesh.material.roughness = 0.4
+											mesh.material.envMapIntensity = 1.5
+											mesh.material.needsUpdate = true
+										}
 									}
 								}
-							}
-						})
+							})
 
-						scene.add(model)
-						animate()
-						setIsLoading(false)
-						startFlashEffect()
-					},
-					progress => {
-						console.log('Loading progress:', (progress.loaded / progress.total) * 100 + '%')
-					},
-					error => {
-						console.error('Error loading model:', error)
-						setError('Błąd ładowania modelu 3D')
-					}
-				)
+							scene.add(model)
+							animate()
+							setIsLoading(false)
+							startFlashEffect()
+						},
+						progress => {
+							console.log('Loading progress:', (progress.loaded / progress.total) * 100 + '%')
+						},
+						error => {
+							console.error('Error loading model:', error)
+							setError('Błąd ładowania modelu 3D')
+							// Pokaż fallback zamiast modelu
+							showModelFallback()
+						}
+					)
+				} catch (gltfError) {
+					console.error('Error initializing GLTFLoader:', gltfError)
+					setError('Błąd inicjalizacji modelu 3D')
+					showModelFallback()
+				}
 
 				// Flash effect function
 				const startFlashEffect = () => {

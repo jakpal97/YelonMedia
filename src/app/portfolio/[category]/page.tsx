@@ -326,40 +326,10 @@ const categoryData = {
 	},
 }
 
-export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-	const [currentCategory, setCurrentCategory] = useState<CategoryData | null>(null)
-	const [loading, setLoading] = useState(true)
-	const [category, setCategory] = useState<string | null>(null)
+export default function CategoryPage({ params }: { params: { category: string } }) {
 	const [selectedImage, setSelectedImage] = useState<ImageData | null>(null)
-
-	// Obsługa asynchronicznych params w komponencie klientowym
-	useEffect(() => {
-		const resolveParams = async () => {
-			const resolvedParams = await params
-			setCategory(resolvedParams.category)
-		}
-		resolveParams()
-	}, [params])
-
-	// Używamy useEffect, aby uniknąć błędów hydratacji
-	useEffect(() => {
-		if (category) {
-			const categoryDataMap = categoryData as Record<string, CategoryData>
-			setCurrentCategory(categoryDataMap[category])
-			setLoading(false)
-		}
-	}, [category])
-
-	// Pokazujemy loader podczas ładowania
-	if (loading) {
-		return (
-			<div className="min-h-screen flex items-center justify-center bg-black text-white">
-				<div className="text-center">
-					<p className="text-xl">Ładowanie...</p>
-				</div>
-			</div>
-		)
-	}
+	const categoryDataMap = categoryData as Record<string, CategoryData>
+	const currentCategory = categoryDataMap[params.category]
 
 	// Sprawdzenie czy kategoria istnieje
 	if (!currentCategory) {
