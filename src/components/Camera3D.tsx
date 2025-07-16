@@ -320,9 +320,9 @@ const Camera3D = () => {
 				// Load model - nowy model aparatu z fallbackiem
 				try {
 					const loader = new GLTFLoader()
-					console.log('🚀 Loading new camera model: /models/scene.gltf')
+					console.log('🚀 Loading new camera model from AWS')
 					loader.load(
-						'/models/scene.gltf',
+						'https://yelonmedia.s3.us-east-1.amazonaws.com/Model3D/scene.gltf',
 						gltf => {
 							if (!mounted) return
 
