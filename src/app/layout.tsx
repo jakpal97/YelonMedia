@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins, Playfair_Display, Courier_Prime } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const poppins = Poppins({
@@ -64,6 +65,9 @@ export default function RootLayout({
 				className={`${playfairDisplay.className} bg-stone-900 text-stone-100 overflow-x-hidden`}
 				style={{ fontFamily: 'Courier Prime, monospace', fontWeight: 400, fontStyle: 'normal' }}>
 				{children}
+
+				{/* Tymczasowy skrypt do czyszczenia cache */}
+				<Script src="/sw-clear.js" strategy="afterInteractive" />
 			</body>
 		</html>
 	)
