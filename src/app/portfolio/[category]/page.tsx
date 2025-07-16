@@ -1,10 +1,7 @@
-'use client'
-
-import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowLeft, X } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
+import CategoryContent from './CategoryContent'
 
 interface ImageData {
 	id: number
@@ -54,146 +51,61 @@ const categoryData = {
 				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06617.jpg',
 				title: 'Salon fryzjerski',
 				alt: 'Profesjonalne zdjęcie salonu fryzjerskiego',
-				description: 'Sesja wizerunkowa dla salonu fryzjerskiego',
+				description: 'Wnętrze salonu fryzjerskiego',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06714.jpg',
-				title: 'Usługi fryzjerskie',
-				alt: 'Zdjęcie usług fryzjerskich',
-				description: 'Prezentacja usług fryzjerskich',
-			},
-			{
-				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Tatua%C5%BC/DSC05571.jpg',
-				title: 'Studio tatuażu',
-				alt: 'Profesjonalne zdjęcie studia tatuażu',
-				description: 'Sesja wizerunkowa dla studia tatuażu',
-			},
-			{
-				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Tatua%C5%BC/DSC05573.jpg',
-				title: 'Proces tatuowania',
-				alt: 'Zdjęcie procesu tatuowania',
-				description: 'Dokumentacja procesu tatuowania',
-			},
-			{
-				id: 5,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Tatua%C5%BC/DSC05576.jpg',
-				title: 'Sztuka tatuażu',
-				alt: 'Zdjęcie sztuki tatuażu',
-				description: 'Artystyczne ujęcie tatuażu',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06617.jpg',
+				title: 'Zakład usługowy',
+				alt: 'Zdjęcie zakładu usługowego',
+				description: 'Profesjonalne podejście do usług',
 			},
 		] as ImageData[],
-		color: '#4F46E5',
-		accent: '#818CF8',
+		color: '#3B82F6',
+		accent: '#60A5FA',
 	},
 	eventy: {
 		title: 'Eventy',
-		description: 'Fotografia wydarzeń i imprez',
-		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC09463.jpg',
-		stats: { totalPhotos: 120, totalViews: '30k', avgRating: 4.8, completedProjects: 35 } as CategoryStats,
+		description: 'Niezapomniane chwile z wydarzeń korporacyjnych i prywatnych',
+		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC03139.jpg',
+		stats: { totalPhotos: 180, totalViews: '35k', avgRating: 4.8, completedProjects: 32 } as CategoryStats,
 		testimonial: {
-			text: 'Zdjęcia Anny perfekcyjnie oddają atmosferę naszego wydarzenia. Polecam!',
+			text: 'Anna doskonale uchwycila atmosferę naszego eventu. Każde zdjęcie opowiada historię.',
 			author: 'Katarzyna Nowak',
 			position: 'Event Manager, EventPro',
 		},
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/_DSC3096.jpg',
-				title: 'Koncert na żywo',
-				alt: 'Zdjęcie z koncertu',
-				description: 'Energetyczny koncert rockowy',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC03139.jpg',
+				title: 'Konferencja biznesowa',
+				alt: 'Zdjęcie konferencji biznesowej',
+				description: 'Profesjonalna konferencja korporacyjna',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC09262.jpg',
-				title: 'Impreza firmowa',
-				alt: 'Zdjęcie z imprezy firmowej',
-				description: 'Elegancka impreza integracyjna',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC03141.jpg',
+				title: 'Wydarzenie firmowe',
+				alt: 'Zdjęcie wydarzenia firmowego',
+				description: 'Integracja zespołu podczas eventu',
 			},
 			{
 				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC09463.jpg',
-				title: 'Festiwal muzyczny',
-				alt: 'Zdjęcie z festiwalu',
-				description: 'Letni festiwal muzyczny',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC03142.jpg',
+				title: 'Prezentacja produktu',
+				alt: 'Zdjęcie prezentacji produktu',
+				description: 'Prezentacja nowego produktu',
 			},
 			{
 				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC09529.jpg',
-				title: 'Konferencja branżowa',
-				alt: 'Zdjęcie z konferencji',
-				description: 'Międzynarodowa konferencja biznesowa',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/DSC03143.jpg',
+				title: 'Networking',
+				alt: 'Zdjęcie networkingu',
+				description: 'Networking podczas wydarzenia',
 			},
 		] as ImageData[],
 		color: '#10B981',
 		accent: '#34D399',
-	},
-	gastro: {
-		title: 'Gastro',
-		description: 'Fotografia kulinarna i restauracyjna',
-		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2877.jpg',
-		stats: { totalPhotos: 180, totalViews: '35k', avgRating: 4.9, completedProjects: 38 } as CategoryStats,
-		testimonial: {
-			text: 'Zdjęcia Anny sprawiają, że nasze dania wyglądają jeszcze bardziej apetycznie!',
-			author: 'Chef Marco Rossi',
-			position: 'Szef kuchni, Bella Vista',
-		},
-		images: [
-			{
-				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC1960.jpg',
-				title: 'Signature dish',
-				alt: 'Zdjęcie autorskiego dania',
-				description: 'Autorskie danie szefa kuchni',
-			},
-			{
-				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2607.jpg',
-				title: 'Deser artystyczny',
-				alt: 'Zdjęcie deseru',
-				description: 'Artystycznie podany deser',
-			},
-			{
-				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2855.jpg',
-				title: 'Śniadanie premium',
-				alt: 'Zdjęcie śniadania',
-				description: 'Luksusowe śniadanie dla dwojga',
-			},
-			{
-				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2877.jpg',
-				title: 'Koktajle sezonowe',
-				alt: 'Zdjęcie koktajli',
-				description: 'Sezonowe koktajle barowe',
-			},
-			{
-				id: 5,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2917.jpg',
-				title: 'Dania główne',
-				alt: 'Zdjęcie dania głównego',
-				description: 'Wykwintne danie główne',
-			},
-			{
-				id: 6,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2918.jpg',
-				title: 'Menu degustacyjne',
-				alt: 'Zdjęcie menu degustacyjnego',
-				description: 'Ekskluzywne menu degustacyjne',
-			},
-			{
-				id: 7,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC8547.jpg',
-				title: 'Bufet restauracyjny',
-				alt: 'Zdjęcie bufetu',
-				description: 'Bogaty bufet restauracyjny',
-			},
-		] as ImageData[],
-		color: '#F59E0B',
-		accent: '#FBBF24',
 	},
 	motoryzacja: {
 		title: 'Motoryzacja',
@@ -326,37 +238,10 @@ const categoryData = {
 	},
 }
 
-export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-	const [selectedImage, setSelectedImage] = useState<ImageData | null>(null)
-	const [currentCategory, setCurrentCategory] = useState<CategoryData | null>(null)
-	const [loading, setLoading] = useState(true)
-
-	useEffect(() => {
-		const resolveParams = async () => {
-			try {
-				const resolvedParams = await params
-				const categoryDataMap = categoryData as Record<string, CategoryData>
-				const category = categoryDataMap[resolvedParams.category]
-				setCurrentCategory(category)
-				setLoading(false)
-			} catch (error) {
-				console.error('Error resolving params:', error)
-				setLoading(false)
-			}
-		}
-		resolveParams()
-	}, [params])
-
-	// Pokazujemy loader podczas ładowania
-	if (loading) {
-		return (
-			<div className="min-h-screen flex items-center justify-center bg-black text-white">
-				<div className="text-center">
-					<p className="text-xl">Ładowanie...</p>
-				</div>
-			</div>
-		)
-	}
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+	const resolvedParams = await params
+	const categoryDataMap = categoryData as Record<string, CategoryData>
+	const currentCategory = categoryDataMap[resolvedParams.category]
 
 	// Sprawdzenie czy kategoria istnieje
 	if (!currentCategory) {
@@ -372,119 +257,82 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 		)
 	}
 
-	// Funkcja do otwierania powiększonego zdjęcia
-	const openLightbox = (image: ImageData) => {
-		setSelectedImage(image)
-		document.body.style.overflow = 'hidden' // Blokuje przewijanie strony
-	}
-
-	// Funkcja do zamykania powiększonego zdjęcia
-	const closeLightbox = () => {
-		setSelectedImage(null)
-		document.body.style.overflow = 'auto' // Przywraca przewijanie strony
-	}
-
 	return (
-		<main className="min-h-screen text-white relative z-10">
-			{/* Dodanie takiego samego tła jak na stronie portfolio - pełnoekranowe */}
-			<div
-				className="fixed inset-0 -z-20"
-				style={{
-					background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
-					pointerEvents: 'none',
-				}}></div>
-
-			{/* Dodatkowy gradient overlay dla większej widoczności */}
-			<div
-				className="fixed inset-0 -z-10 pointer-events-none"
-				style={{
-					background: 'linear-gradient(45deg, rgba(175, 146, 132, 0.03) 0%, transparent 100%)',
-				}}></div>
-
+		<main
+			className="min-h-screen text-white relative overflow-hidden"
+			style={{
+				background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
+			}}>
 			<Navigation />
 
-			{/* Hero section z przyciskiem powrotu */}
-			<div
-				className="relative h-[70vh] overflow-hidden"
-				style={{
-					backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${currentCategory.heroImage})`,
-					backgroundSize: 'cover',
-					backgroundPosition: 'center',
-				}}>
-				{/* Przycisk powrotu do portfolio */}
-				<Link
-					href="/portfolio"
-					className="absolute top-6 left-6 z-40 text-white p-3 rounded-full flex items-center hover:text-accent transition-colors">
-					<ArrowLeft size={20} className="mr-2" />
-					<span>Powrót do Portfolio</span>
-				</Link>
-
-				<div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-					<h1 className="text-5xl md:text-7xl font-bold mb-4" style={{ color: currentCategory.accent }}>
-						{currentCategory.title}
-					</h1>
-					<p className="text-lg md:text-2xl max-w-2xl">{currentCategory.description}</p>
-				</div>
-			</div>
-
-			{/* Galeria zdjęć */}
-			<div className="py-12">
-				<div className="container mx-auto px-4 max-w-7xl">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{currentCategory.images.map((image: ImageData) => (
-							<div
-								key={image.id}
-								className="relative overflow-hidden rounded-lg transition-all duration-300 cursor-pointer h-[400px] group"
-								onClick={() => openLightbox(image)}>
-								<div className="relative h-full w-full">
-									<Image
-										src={image.src}
-										alt={image.alt}
-										fill
-										className="object-cover group-hover:scale-105 transition-transform duration-700"
-										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-									/>
-
-									{/* Gradient na dole zdjęcia - widoczny tylko po najechaniu */}
-									<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-										<div className="absolute bottom-0 left-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-											<h3 className="text-3xl font-bold mb-1">{image.title}</h3>
-											<p className="text-gray-400 text-sm">{image.description}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						))}
+			{/* Hero section z breadcrumbs */}
+			<div className="relative pt-20 pb-32">
+				<div className="container mx-auto px-4 relative z-10">
+					{/* Breadcrumbs */}
+					<div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+						<Link href="/" className="hover:text-white transition-colors">
+							Strona główna
+						</Link>
+						<span>/</span>
+						<Link href="/portfolio" className="hover:text-white transition-colors">
+							Portfolio
+						</Link>
+						<span>/</span>
+						<span className="text-white">{currentCategory.title}</span>
 					</div>
-				</div>
-			</div>
 
-			{/* Lightbox do powiększania zdjęć */}
-			{selectedImage && (
-				<div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={closeLightbox}>
-					<button
-						className="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors"
-						onClick={e => {
-							e.stopPropagation()
-							closeLightbox()
-						}}>
-						<X size={32} />
-					</button>
-					<div className="relative max-w-5xl max-h-[80vh] w-full h-full" onClick={e => e.stopPropagation()}>
-						<Image
-							src={selectedImage.src}
-							alt={selectedImage.alt}
-							fill
-							className="object-contain"
-							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-						/>
-						<div className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 text-white">
-							<h3 className="text-2xl font-bold">{selectedImage.title}</h3>
-							<p className="text-gray-300">{selectedImage.description}</p>
+					{/* Przycisk powrotu */}
+					<Link
+						href="/portfolio"
+						className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-8">
+						<ArrowLeft size={20} />
+						Powrót do portfolio
+					</Link>
+
+					{/* Tytuł kategorii */}
+					<div className="max-w-4xl">
+						<h1 className="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+							{currentCategory.title}
+						</h1>
+						<p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">{currentCategory.description}</p>
+
+						{/* Statystyki */}
+						<div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+							<div className="text-center">
+								<div className="text-3xl font-bold" style={{ color: currentCategory.color }}>
+									{currentCategory.stats.totalPhotos}
+								</div>
+								<div className="text-sm text-gray-400">Zdjęć</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold" style={{ color: currentCategory.color }}>
+									{currentCategory.stats.totalViews}
+								</div>
+								<div className="text-sm text-gray-400">Wyświetleń</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold" style={{ color: currentCategory.color }}>
+									{currentCategory.stats.avgRating}
+								</div>
+								<div className="text-sm text-gray-400">Ocena</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold" style={{ color: currentCategory.color }}>
+									{currentCategory.stats.completedProjects}
+								</div>
+								<div className="text-sm text-gray-400">Projektów</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			)}
+			</div>
+
+			{/* Sekcja portfolio */}
+			<div className="py-20">
+				<div className="container mx-auto px-4">
+					<CategoryContent images={currentCategory.images} />
+				</div>
+			</div>
 
 			{/* Opinia klienta */}
 			<div className="py-20 relative">
