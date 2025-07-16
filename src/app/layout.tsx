@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 import { Poppins, Playfair_Display, Courier_Prime } from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
-import fs from 'fs'
-import path from 'path'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -38,8 +36,8 @@ const mainFont = {
 	className: 'font-main',
 }
 
-// Wczytaj krytyczny CSS
-const criticalCSS = fs.readFileSync(path.join(process.cwd(), 'src/app/critical.css'), 'utf8')
+// Import krytycznego CSS
+import './critical.css'
 
 export const metadata: Metadata = {
 	title: 'Yelon Media - Fotograf | Fotografia Portretowa, Ślubna i Eventowa',
@@ -75,8 +73,7 @@ export default function RootLayout({
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-				{/* Krytyczny CSS inline */}
-				<style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
+				{/* Krytyczny CSS już zaimportowany jako moduł */}
 
 				{/* Font display swap dla lepszego CLS */}
 				<style
