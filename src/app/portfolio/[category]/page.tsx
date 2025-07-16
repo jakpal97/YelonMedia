@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, use } from 'react'
+import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -328,9 +328,35 @@ const categoryData = {
 
 export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
 	const [selectedImage, setSelectedImage] = useState<ImageData | null>(null)
-	const resolvedParams = use(params)
-	const categoryDataMap = categoryData as Record<string, CategoryData>
-	const currentCategory = categoryDataMap[resolvedParams.category]
+	const [currentCategory, setCurrentCategory] = useState<CategoryData | null>(null)
+	const [loading, setLoading] = useState(true)
+
+	useEffect(() => {
+		const resolveParams = async () => {
+			try {
+				const resolvedParams = await params
+				const categoryDataMap = categoryData as Record<string, CategoryData>
+				const category = categoryDataMap[resolvedParams.category]
+				setCurrentCategory(category)
+				setLoading(false)
+			} catch (error) {
+				console.error('Error resolving params:', error)
+				setLoading(false)
+			}
+		}
+		resolveParams()
+	}, [params])
+
+	// Pokazujemy loader podczas ładowania
+	if (loading) {
+		return (
+			<div className="min-h-screen flex items-center justify-center bg-black text-white">
+				<div className="text-center">
+					<p className="text-xl">Ładowanie...</p>
+				</div>
+			</div>
+		)
+	}
 
 	// Sprawdzenie czy kategoria istnieje
 	if (!currentCategory) {
