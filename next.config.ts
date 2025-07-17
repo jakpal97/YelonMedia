@@ -37,11 +37,10 @@ const nextConfig: NextConfig = {
 
 	// Webpack optymalizacje
 	webpack: (config, { isServer }) => {
-		// Tree shaking dla Three.js
-		config.optimization.usedExports = true
-		config.optimization.sideEffects = false
+		// Usuwam problematyczne config.optimization.usedExports - powoduje konflikt z Next.js 15.3.3
+		// Next.js sam zarządza tree shaking
 
-		// Code splitting
+		// Code splitting - tylko jeśli nie jest serverem
 		if (!isServer) {
 			config.optimization.splitChunks = {
 				chunks: 'all',

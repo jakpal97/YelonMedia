@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface ImageData {
 	id: number
@@ -149,7 +149,6 @@ const categoryData = {
 				title: 'Signature dish',
 				alt: 'Zdjęcie autorskiego dania',
 				description: 'Autorskie danie szefa kuchni',
-				
 			},
 			{
 				id: 2,
@@ -157,7 +156,6 @@ const categoryData = {
 				title: 'Deser artystyczny',
 				alt: 'Zdjęcie deseru',
 				description: 'Artystycznie podany deser',
-				
 			},
 			{
 				id: 3,
@@ -165,7 +163,6 @@ const categoryData = {
 				title: 'Śniadanie premium',
 				alt: 'Zdjęcie śniadania',
 				description: 'Luksusowe śniadanie dla dwojga',
-				
 			},
 			{
 				id: 4,
@@ -173,7 +170,6 @@ const categoryData = {
 				title: 'Koktajle sezonowe',
 				alt: 'Zdjęcie koktajli',
 				description: 'Sezonowe koktajle barowe',
-				
 			},
 			{
 				id: 5,
@@ -181,7 +177,6 @@ const categoryData = {
 				title: 'Dania główne',
 				alt: 'Zdjęcie dania głównego',
 				description: 'Wykwintne danie główne',
-				
 			},
 			{
 				id: 6,
@@ -189,7 +184,6 @@ const categoryData = {
 				title: 'Menu degustacyjne',
 				alt: 'Zdjęcie menu degustacyjnego',
 				description: 'Ekskluzywne menu degustacyjne',
-				
 			},
 			{
 				id: 7,
@@ -197,7 +191,6 @@ const categoryData = {
 				title: 'Bufet restauracyjny',
 				alt: 'Zdjęcie bufetu',
 				description: 'Bogaty bufet restauracyjny',
-				
 			},
 		] as ImageData[],
 		color: '#F59E0B',
@@ -220,7 +213,6 @@ const categoryData = {
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
-			
 			},
 			{
 				id: 2,
@@ -228,7 +220,6 @@ const categoryData = {
 				title: 'SUV terenowy',
 				alt: 'Zdjęcie SUVa terenowego',
 				description: 'Wytrzymały SUV terenowy',
-				
 			},
 			{
 				id: 3,
@@ -236,7 +227,6 @@ const categoryData = {
 				title: 'Kabriolet',
 				alt: 'Zdjęcie kabrioletu',
 				description: 'Elegancki kabriolet',
-				
 			},
 			{
 				id: 4,
@@ -244,7 +234,6 @@ const categoryData = {
 				title: 'Samochód sportowy',
 				alt: 'Zdjęcie samochodu sportowego',
 				description: 'Ekskluzywny samochód sportowy',
-				
 			},
 		] as ImageData[],
 		color: '#EF4444',
@@ -267,7 +256,6 @@ const categoryData = {
 				title: 'Portret klasyczny',
 				alt: 'Portret klasyczny w studio',
 				description: 'Profesjonalny portret w studio',
-				
 			},
 			{
 				id: 2,
@@ -275,7 +263,6 @@ const categoryData = {
 				title: 'Fashion Editorial',
 				alt: 'Zdjęcie fashion editorial',
 				description: 'Kreatywna sesja fashion',
-				
 			},
 			{
 				id: 3,
@@ -283,7 +270,6 @@ const categoryData = {
 				title: 'Beauty Shot',
 				alt: 'Beauty shot w studio',
 				description: 'Profesjonalne zdjęcie beauty',
-				
 			},
 			{
 				id: 4,
@@ -291,7 +277,6 @@ const categoryData = {
 				title: 'Dramatyczne światło',
 				alt: 'Portret z dramatycznym światłem',
 				description: 'Portret z wykorzystaniem dramatycznego światła',
-				
 			},
 		] as ImageData[],
 		color: '#8B5CF6',
@@ -314,7 +299,6 @@ const categoryData = {
 				title: 'Pierwszy taniec',
 				alt: 'Pierwszy taniec pary młodej',
 				description: 'Romantyczny pierwszy taniec',
-				
 			},
 			{
 				id: 2,
@@ -322,7 +306,6 @@ const categoryData = {
 				title: 'Ceremonia ślubna',
 				alt: 'Ceremonia ślubna',
 				description: 'Wzruszający moment przysięgi',
-				
 			},
 			{
 				id: 3,
@@ -330,7 +313,6 @@ const categoryData = {
 				title: 'Sesja plenerowa',
 				alt: 'Sesja plenerowa pary młodej',
 				description: 'Romantyczna sesja w plenerze',
-				
 			},
 			{
 				id: 4,
@@ -338,7 +320,6 @@ const categoryData = {
 				title: 'Detale ślubne',
 				alt: 'Detale ślubne',
 				description: 'Piękne detale ślubne',
-				
 			},
 		] as ImageData[],
 		color: '#EC4899',
@@ -350,6 +331,9 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 	const [currentCategory, setCurrentCategory] = useState<CategoryData | null>(null)
 	const [loading, setLoading] = useState(true)
 	const [category, setCategory] = useState<string | null>(null)
+	// Stany do zarządzania lightbox
+	const [lightboxOpen, setLightboxOpen] = useState(false)
+	const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
 	// Obsługa asynchronicznych params w komponencie klientowym
 	useEffect(() => {
@@ -368,6 +352,63 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 			setLoading(false)
 		}
 	}, [category])
+
+	// Funkcje obsługi lightbox
+	const openLightbox = (index: number) => {
+		setCurrentImageIndex(index)
+		setLightboxOpen(true)
+	}
+
+	const closeLightbox = () => {
+		setLightboxOpen(false)
+	}
+
+	const nextImage = () => {
+		if (currentCategory) {
+			setCurrentImageIndex(prev => (prev + 1) % currentCategory.images.length)
+		}
+	}
+
+	const previousImage = () => {
+		if (currentCategory) {
+			setCurrentImageIndex(prev => (prev - 1 + currentCategory.images.length) % currentCategory.images.length)
+		}
+	}
+
+	// Obsługa klawiatury
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (!lightboxOpen) return
+
+			switch (e.key) {
+				case 'Escape':
+					closeLightbox()
+					break
+				case 'ArrowRight':
+					nextImage()
+					break
+				case 'ArrowLeft':
+					previousImage()
+					break
+			}
+		}
+
+		document.addEventListener('keydown', handleKeyDown)
+		return () => document.removeEventListener('keydown', handleKeyDown)
+	}, [lightboxOpen])
+
+	// Blokowanie scrollowania gdy lightbox jest otwarty
+	useEffect(() => {
+		if (lightboxOpen) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'unset'
+		}
+
+		return () => {
+			document.body.style.overflow = 'unset'
+		}
+	}, [lightboxOpen])
 
 	// Pokazujemy loader podczas ładowania
 	if (loading) {
@@ -429,11 +470,12 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 			<div className="bg-black py-12">
 				<div className="container mx-auto px-4">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{displayedImages.map((image: ImageData) => (
+						{displayedImages.map((image: ImageData, index: number) => (
 							<div
 								key={image.id}
-								className="relative overflow-hidden rounded-lg border-2 border-transparent hover:border-accent transition-all duration-300"
-								style={{ borderColor: 'transparent', borderWidth: '2px' }}>
+								className="relative overflow-hidden rounded-lg border-2 border-transparent hover:border-accent transition-all duration-300 cursor-pointer"
+								style={{ borderColor: 'transparent', borderWidth: '2px' }}
+								onClick={() => openLightbox(index)}>
 								<div className="aspect-w-3 aspect-h-2 relative h-[250px]">
 									<Image
 										src={image.src}
@@ -453,37 +495,93 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 				</div>
 			</div>
 
-			{/* Opinia klienta */}
-			<div className="bg-gray-900 py-12">
-				<div className="container mx-auto px-4">
-					<div className="max-w-3xl mx-auto text-center">
-						<p className="text-xl italic mb-4">&ldquo;{currentCategory.testimonial.text}&rdquo;</p>
-						<p className="font-bold">{currentCategory.testimonial.author}</p>
-						<p className="text-gray-400">{currentCategory.testimonial.position}</p>
+			{/* Lightbox Modal */}
+			{lightboxOpen && currentCategory && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
+					{/* Przycisk zamknięcia */}
+					<button
+						onClick={closeLightbox}
+						className="absolute top-4 right-4 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+						<X size={32} />
+					</button>
+
+					{/* Przycisk poprzednie zdjęcie */}
+					<button
+						onClick={previousImage}
+						className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+						<ChevronLeft size={48} />
+					</button>
+
+					{/* Przycisk następne zdjęcie */}
+					<button
+						onClick={nextImage}
+						className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+						<ChevronRight size={48} />
+					</button>
+
+					{/* Główne zdjęcie */}
+					<div className="relative max-w-7xl max-h-[90vh] mx-4">
+						<Image
+							src={currentCategory.images[currentImageIndex].src}
+							alt={currentCategory.images[currentImageIndex].alt}
+							width={1200}
+							height={800}
+							className="object-contain max-h-[80vh] w-auto"
+							priority
+						/>
+
+						{/* Informacje o zdjęciu */}
+						<div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+							<h3 className="text-2xl font-bold mb-2">{currentCategory.images[currentImageIndex].title}</h3>
+							<p className="text-gray-300 mb-2">{currentCategory.images[currentImageIndex].description}</p>
+							<p className="text-sm text-gray-400">
+								{currentImageIndex + 1} z {currentCategory.images.length}
+							</p>
+						</div>
+					</div>
+
+					{/* Overlay do zamykania */}
+					<div className="absolute inset-0 -z-10" onClick={closeLightbox}></div>
+				</div>
+			)}
+
+			{/* Wspólne tło dla opinii i CTA */}
+			<div
+				style={{
+					background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
+				}}>
+				{/* Opinia klienta */}
+				<div className="py-12">
+					<div className="container mx-auto px-4">
+						<div className="max-w-3xl mx-auto text-center">
+							<p className="text-xl italic mb-4">&ldquo;{currentCategory.testimonial.text}&rdquo;</p>
+							<p className="font-bold">{currentCategory.testimonial.author}</p>
+							<p className="text-gray-400">{currentCategory.testimonial.position}</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			{/* Sekcja CTA */}
-			<div className="bg-gradient-to-b from-gray-900 to-black py-16">
-				<div className="container mx-auto px-4 text-center">
-					<h2 className="text-3xl md:text-4xl font-bold mb-4">Zainteresowała Cię ta kategoria?</h2>
-					<p className="text-lg text-gray-300 mb-8">
-						Skontaktuj się ze mną, aby omówić szczegóły Twojego projektu w kategorii{' '}
-						{currentCategory.title.toLowerCase()}
-					</p>
-					<div className="flex flex-wrap justify-center gap-4">
-						<Link
-							href="/contact"
-							className="px-6 py-3 text-black font-bold rounded-lg hover:bg-opacity-80 transition-all"
-							style={{ backgroundColor: currentCategory.accent }}>
-							Umów konsultację
-						</Link>
-						<Link
-							href="/portfolio"
-							className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-all">
-							Inne kategorie
-						</Link>
+				{/* Sekcja CTA */}
+				<div className="py-16">
+					<div className="container mx-auto px-4 text-center">
+						<h2 className="text-3xl md:text-4xl font-bold mb-4">Zainteresowała Cię ta kategoria?</h2>
+						<p className="text-lg text-gray-300 mb-8">
+							Skontaktuj się ze mną, aby omówić szczegóły Twojego projektu w kategorii{' '}
+							{currentCategory.title.toLowerCase()}
+						</p>
+						<div className="flex flex-wrap justify-center gap-4">
+							<Link
+								href="/contact"
+								className="px-6 py-3 text-black font-bold rounded-lg hover:bg-opacity-80 transition-all"
+								style={{ backgroundColor: currentCategory.accent }}>
+								Umów konsultację
+							</Link>
+							<Link
+								href="/portfolio"
+								className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-all">
+								Inne kategorie
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>

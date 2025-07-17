@@ -43,7 +43,6 @@ const Navigation = () => {
 		{ href: '/', label: 'Start' },
 		{ href: '/#about', label: 'O Mnie' },
 		{ href: '/portfolio', label: 'Portfolio' },
-		{ href: '/blog', label: 'Blog' },
 		{ href: '/contact', label: 'Kontakt' },
 	]
 
