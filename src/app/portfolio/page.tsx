@@ -65,13 +65,13 @@ async function getPortfolioItems() {
 			url: '/portfolio/wesela',
 		},
 		{
-			image: '/IMG_7002.JPG',
-			title: 'Studia',
+			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC08100.jpg',
+			title: 'Moda',
 			subtitle: 'Profesjonalne sesje studyjne',
 			handle: '@studia',
 			borderColor: '#8B5CF6',
 			gradient: 'linear-gradient(135deg,#8B5CF6,#000)',
-			url: '/portfolio/studia',
+			url: '/portfolio/moda',
 		},
 	]
 }
