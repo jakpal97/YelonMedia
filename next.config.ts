@@ -9,10 +9,11 @@ const nextConfig: NextConfig = {
 	// Agresywna optymalizacja obrazów
 	images: {
 		domains: ['yelonmedia.s3.us-east-1.amazonaws.com', 'images.unsplash.com'],
-		formats: ['image/webp'],
-		deviceSizes: [640, 828, 1200],
-		imageSizes: [32, 64, 128],
-		minimumCacheTTL: 86400,
+		formats: ['image/webp', 'image/avif'],
+		deviceSizes: [320, 640, 768, 1024, 1280, 1920],
+		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+		minimumCacheTTL: 31536000, // 1 rok cache dla lepszej wydajności
+		dangerouslyAllowSVG: false,
 	},
 
 	// Tymczasowe wyłączenie cache (usuń po naprawie)

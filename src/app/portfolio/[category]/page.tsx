@@ -439,6 +439,7 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 	// Stany do zarządzania lightbox
 	const [lightboxOpen, setLightboxOpen] = useState(false)
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
+	const [imageLoading, setImageLoading] = useState(false)
 
 	// Obsługa asynchronicznych params w komponencie klientowym
 	useEffect(() => {
@@ -461,30 +462,34 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 	// Funkcje obsługi lightbox
 	const openLightbox = (index: number) => {
 		setCurrentImageIndex(index)
+		setImageLoading(true)
 		setLightboxOpen(true)
 	}
 
 	const closeLightbox = () => {
 		setLightboxOpen(false)
+		setImageLoading(false)
 	}
 
 	const nextImage = () => {
 		if (currentCategory) {
+			setImageLoading(true)
 			setCurrentImageIndex(prev => (prev + 1) % currentCategory.images.length)
 		}
 	}
 
 	const previousImage = () => {
 		if (currentCategory) {
+			setImageLoading(true)
 			setCurrentImageIndex(prev => (prev - 1 + currentCategory.images.length) % currentCategory.images.length)
 		}
 	}
 
-	// Obsługa klawiatury
+	// Obsługa klawiatury - zoptymalizowana
 	useEffect(() => {
-		const handleKeyDown = (e: KeyboardEvent) => {
-			if (!lightboxOpen) return
+		if (!lightboxOpen) return
 
+		const handleKeyDown = (e: KeyboardEvent) => {
 			switch (e.key) {
 				case 'Escape':
 					closeLightbox()
@@ -500,7 +505,7 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 
 		document.addEventListener('keydown', handleKeyDown)
 		return () => document.removeEventListener('keydown', handleKeyDown)
-	}, [lightboxOpen])
+	}, [lightboxOpen, currentCategory])
 
 	// Blokowanie scrollowania gdy lightbox jest otwarty
 	useEffect(() => {
@@ -514,6 +519,24 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 			document.body.style.overflow = 'unset'
 		}
 	}, [lightboxOpen])
+
+	// Preload sąsiednich obrazów dla szybszej nawigacji
+	useEffect(() => {
+		if (!lightboxOpen || !currentCategory) return
+
+		const preloadImage = (src: string) => {
+			const img = document.createElement('img')
+			img.src = src
+		}
+
+		// Preload poprzednie i następne zdjęcie
+		const images = currentCategory.images
+		const nextIndex = (currentImageIndex + 1) % images.length
+		const prevIndex = (currentImageIndex - 1 + images.length) % images.length
+
+		preloadImage(images[nextIndex].src)
+		preloadImage(images[prevIndex].src)
+	}, [lightboxOpen, currentImageIndex, currentCategory])
 
 	// Pokazujemy loader podczas ładowania
 	if (loading) {
@@ -545,6 +568,8 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 
 	return (
 		<main className="min-h-screen bg-black text-white ">
+			{/* Preload hero image dla lepszej wydajności */}
+			<link rel="preload" as="image" href={currentCategory.heroImage} />
 			<Navigation />
 
 			{/* Hero section z przyciskiem powrotu */}
@@ -554,6 +579,7 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 					backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${currentCategory.heroImage})`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
+					backgroundAttachment: 'scroll', // Lepsze na mobile
 				}}>
 				{/* Przycisk powrotu do portfolio */}
 				<Link
@@ -587,12 +613,10 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 										alt={image.alt}
 										fill
 										className="object-cover"
-										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+										sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 300px"
+										loading={index < 3 ? 'eager' : 'lazy'}
+										priority={index < 2}
 									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-										<h3 className="text-xl font-bold">{image.title}</h3>
-										<p className="text-gray-300">{image.description}</p>
-									</div>
 								</div>
 							</div>
 						))}
@@ -626,13 +650,21 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 
 					{/* Główne zdjęcie */}
 					<div className="relative max-w-7xl max-h-[90vh] mx-4">
+						{imageLoading && (
+							<div className="absolute inset-0 flex items-center justify-center bg-black/50">
+								<div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+							</div>
+						)}
 						<Image
 							src={currentCategory.images[currentImageIndex].src}
 							alt={currentCategory.images[currentImageIndex].alt}
-							width={1200}
-							height={800}
+							width={900}
+							height={600}
 							className="object-contain max-h-[80vh] w-auto"
+							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 85vw, 900px"
 							priority
+							onLoad={() => setImageLoading(false)}
+							onLoadStart={() => setImageLoading(true)}
 						/>
 
 						{/* Informacje o zdjęciu */}
