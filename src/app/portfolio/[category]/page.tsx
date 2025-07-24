@@ -568,8 +568,6 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 
 	return (
 		<main className="min-h-screen bg-black text-white ">
-			{/* Preload hero image dla lepszej wydajności */}
-			<link rel="preload" as="image" href={currentCategory.heroImage} />
 			<Navigation />
 
 			{/* Hero section z przyciskiem powrotu */}
@@ -579,7 +577,6 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 					backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${currentCategory.heroImage})`,
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
-					backgroundAttachment: 'scroll', // Lepsze na mobile
 				}}>
 				{/* Przycisk powrotu do portfolio */}
 				<Link
@@ -613,9 +610,10 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 										alt={image.alt}
 										fill
 										className="object-cover"
-										sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 300px"
+										sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
 										loading={index < 3 ? 'eager' : 'lazy'}
 										priority={index < 2}
+										quality={90}
 									/>
 								</div>
 							</div>
@@ -658,23 +656,15 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 						<Image
 							src={currentCategory.images[currentImageIndex].src}
 							alt={currentCategory.images[currentImageIndex].alt}
-							width={900}
-							height={600}
+							width={1200}
+							height={800}
 							className="object-contain max-h-[80vh] w-auto"
-							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 85vw, 900px"
+							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 1200px"
 							priority
+							quality={95}
 							onLoad={() => setImageLoading(false)}
 							onLoadStart={() => setImageLoading(true)}
 						/>
-
-						{/* Informacje o zdjęciu */}
-						<div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-							<h3 className="text-2xl font-bold mb-2">{currentCategory.images[currentImageIndex].title}</h3>
-							<p className="text-gray-300 mb-2">{currentCategory.images[currentImageIndex].description}</p>
-							<p className="text-sm text-gray-400">
-								{currentImageIndex + 1} z {currentCategory.images.length}
-							</p>
-						</div>
 					</div>
 
 					{/* Overlay do zamykania */}
