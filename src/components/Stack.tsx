@@ -65,11 +65,14 @@ export default function Stack({
 		cardsData.length
 			? cardsData
 			: [
-					{ id: 1, img: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format' },
-					{ id: 2, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01803.jpg' },
-					{ id: 3, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2877.jpg' },
-					{ id: 4, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06992.jpg' },
-					{ id: 5, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC05475.jpg' },
+					{
+						id: 1,
+						img: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format&v=20241201',
+					},
+					{ id: 2, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01803.jpg?v=20241201' },
+					{ id: 3, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2877.jpg?v=20241201' },
+					{ id: 4, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06992.jpg?v=20241201' },
+					{ id: 5, img: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC05475.jpg?v=20241201' },
 			  ]
 	)
 
