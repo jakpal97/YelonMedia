@@ -344,7 +344,7 @@ const categoryData = {
 		color: '#EF4444',
 		accent: '#F87171',
 	},
-	studia: {
+	moda: {
 		title: 'Moda',
 		description: 'Profesjonalne sesje modowe',
 		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC08100.jpg',
