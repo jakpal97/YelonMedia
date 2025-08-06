@@ -567,151 +567,179 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 	const displayedImages = currentCategory.images
 
 	return (
-		<main className="min-h-screen bg-black text-white ">
-			<Navigation />
+		<>
+			{/* Preload hero image */}
+			<head>
+				<link rel="preload" as="image" href={currentCategory.heroImage} />
+				{/* Preload pierwsze 3 zdjęcia z galerii */}
+				{currentCategory.images.slice(0, 3).map((image, index) => (
+					<link key={index} rel="preload" as="image" href={image.src} />
+				))}
+			</head>
+			<main className="min-h-screen bg-black text-white ">
+				<Navigation />
 
-			{/* Hero section z przyciskiem powrotu */}
-			<div
-				className="relative h-[70vh] overflow-hidden"
-				style={{
-					backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${currentCategory.heroImage})`,
-					backgroundSize: 'cover',
-					backgroundPosition: 'center',
-				}}>
-				{/* Przycisk powrotu do portfolio */}
-				<Link
-					href="/portfolio"
-					className="absolute top-6 left-6 z-40 text-white p-3 rounded-full flex items-center hover:text-accent transition-colors">
-					<ArrowLeft size={20} className="mr-2" />
-					<span>Powrót do Portfolio</span>
-				</Link>
+				{/* Hero section z przyciskiem powrotu */}
+				<div className="relative h-[70vh] overflow-hidden">
+					{/* Optimized hero image */}
+					<Image
+						src={currentCategory.heroImage}
+						alt={`Hero image - ${currentCategory.title}`}
+						fill
+						priority
+						quality={85}
+						sizes="100vw"
+						className="object-cover"
+						placeholder="blur"
+						blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+					/>
+					{/* Gradient overlay */}
+					<div
+						className="absolute inset-0"
+						style={{
+							background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))',
+						}}
+					/>
+					{/* Przycisk powrotu do portfolio */}
+					<Link
+						href="/portfolio"
+						className="absolute top-6 left-6 z-40 text-white p-3 rounded-full flex items-center hover:text-accent transition-colors">
+						<ArrowLeft size={20} className="mr-2" />
+						<span>Powrót do Portfolio</span>
+					</Link>
 
-				<div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-					<h1 className="text-5xl md:text-7xl font-bold mb-4" style={{ color: currentCategory.accent }}>
-						{currentCategory.title}
-					</h1>
-					<p className="text-lg md:text-2xl max-w-2xl">{currentCategory.description}</p>
-				</div>
-			</div>
-
-			{/* Galeria zdjęć */}
-			<div className="bg-black py-12">
-				<div className="container mx-auto px-4">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{displayedImages.map((image: ImageData, index: number) => (
-							<div
-								key={image.id}
-								className="relative overflow-hidden rounded-lg border-2 border-transparent hover:border-accent transition-all duration-300 cursor-pointer"
-								style={{ borderColor: 'transparent', borderWidth: '2px' }}
-								onClick={() => openLightbox(index)}>
-								<div className="aspect-w-3 aspect-h-2 relative h-[250px]">
-									<Image
-										src={image.src}
-										alt={image.alt}
-										fill
-										className="object-cover"
-										sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
-										loading={index < 3 ? 'eager' : 'lazy'}
-										priority={index < 2}
-										quality={90}
-									/>
-								</div>
-							</div>
-						))}
+					<div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+						<h1 className="text-5xl md:text-7xl font-bold mb-4" style={{ color: currentCategory.accent }}>
+							{currentCategory.title}
+						</h1>
+						<p className="text-lg md:text-2xl max-w-2xl">{currentCategory.description}</p>
 					</div>
 				</div>
-			</div>
 
-			{/* Lightbox Modal */}
-			{lightboxOpen && currentCategory && (
-				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
-					{/* Przycisk zamknięcia */}
-					<button
-						onClick={closeLightbox}
-						className="absolute top-4 right-4 z-10 p-2 text-white hover:text-gray-300 transition-colors">
-						<X size={32} />
-					</button>
-
-					{/* Przycisk poprzednie zdjęcie */}
-					<button
-						onClick={previousImage}
-						className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
-						<ChevronLeft size={48} />
-					</button>
-
-					{/* Przycisk następne zdjęcie */}
-					<button
-						onClick={nextImage}
-						className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
-						<ChevronRight size={48} />
-					</button>
-
-					{/* Główne zdjęcie */}
-					<div className="relative max-w-7xl max-h-[90vh] mx-4">
-						{imageLoading && (
-							<div className="absolute inset-0 flex items-center justify-center bg-black/50">
-								<div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-							</div>
-						)}
-						<Image
-							src={currentCategory.images[currentImageIndex].src}
-							alt={currentCategory.images[currentImageIndex].alt}
-							width={1200}
-							height={800}
-							className="object-contain max-h-[80vh] w-auto"
-							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 1200px"
-							priority
-							quality={95}
-							onLoad={() => setImageLoading(false)}
-							onLoadStart={() => setImageLoading(true)}
-						/>
-					</div>
-
-					{/* Overlay do zamykania */}
-					<div className="absolute inset-0 -z-10" onClick={closeLightbox}></div>
-				</div>
-			)}
-
-			{/* Wspólne tło dla opinii i CTA */}
-			<div
-				style={{
-					background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
-				}}>
-				{/* Opinia klienta */}
-				<div className="py-12">
+				{/* Galeria zdjęć */}
+				<div className="bg-black py-12">
 					<div className="container mx-auto px-4">
-						<div className="max-w-3xl mx-auto text-center">
-							<p className="text-xl italic mb-4">&ldquo;{currentCategory.testimonial.text}&rdquo;</p>
-							<p className="font-bold">{currentCategory.testimonial.author}</p>
-							<p className="text-gray-400">{currentCategory.testimonial.position}</p>
+						{/* Loading skeleton dla galerii */}
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+							{displayedImages.map((image: ImageData, index: number) => (
+								<div
+									key={image.id}
+									className="relative overflow-hidden rounded-lg border-2 border-transparent hover:border-accent transition-all duration-300 cursor-pointer"
+									style={{ borderColor: 'transparent', borderWidth: '2px' }}
+									onClick={() => openLightbox(index)}>
+									<div className="aspect-w-3 aspect-h-2 relative h-[250px]">
+										{/* Loading skeleton */}
+										<div className="absolute inset-0 bg-gray-800 animate-pulse rounded-lg" />
+										<Image
+											src={image.src}
+											alt={image.alt}
+											fill
+											className="object-cover"
+											sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
+											loading={index < 3 ? 'eager' : 'lazy'}
+											priority={index < 2}
+											quality={75}
+											placeholder="blur"
+											blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+										/>
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
 
-				{/* Sekcja CTA */}
-				<div className="py-16">
-					<div className="container mx-auto px-4 text-center">
-						<h2 className="text-3xl md:text-4xl font-bold mb-4">Zainteresowała Cię ta kategoria?</h2>
-						<p className="text-lg text-gray-300 mb-8">
-							Skontaktuj się ze mną, aby omówić szczegóły Twojego projektu w kategorii{' '}
-							{currentCategory.title.toLowerCase()}
-						</p>
-						<div className="flex flex-wrap justify-center gap-4">
-							<Link
-								href="/contact"
-								className="px-6 py-3 text-black font-bold rounded-lg hover:bg-opacity-80 transition-all"
-								style={{ backgroundColor: currentCategory.accent }}>
-								Umów konsultację
-							</Link>
-							<Link
-								href="/portfolio"
-								className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-all">
-								Inne kategorie
-							</Link>
+				{/* Lightbox Modal */}
+				{lightboxOpen && currentCategory && (
+					<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
+						{/* Przycisk zamknięcia */}
+						<button
+							onClick={closeLightbox}
+							className="absolute top-4 right-4 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+							<X size={32} />
+						</button>
+
+						{/* Przycisk poprzednie zdjęcie */}
+						<button
+							onClick={previousImage}
+							className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+							<ChevronLeft size={48} />
+						</button>
+
+						{/* Przycisk następne zdjęcie */}
+						<button
+							onClick={nextImage}
+							className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+							<ChevronRight size={48} />
+						</button>
+
+						{/* Główne zdjęcie */}
+						<div className="relative max-w-7xl max-h-[90vh] mx-4">
+							{imageLoading && (
+								<div className="absolute inset-0 flex items-center justify-center bg-black/50">
+									<div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+								</div>
+							)}
+							<Image
+								src={currentCategory.images[currentImageIndex].src}
+								alt={currentCategory.images[currentImageIndex].alt}
+								width={1200}
+								height={800}
+								className="object-contain max-h-[80vh] w-auto"
+								sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 1200px"
+								priority
+								quality={85}
+								onLoad={() => setImageLoading(false)}
+								onLoadStart={() => setImageLoading(true)}
+							/>
+						</div>
+
+						{/* Overlay do zamykania */}
+						<div className="absolute inset-0 -z-10" onClick={closeLightbox}></div>
+					</div>
+				)}
+
+				{/* Wspólne tło dla opinii i CTA */}
+				<div
+					style={{
+						background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
+					}}>
+					{/* Opinia klienta */}
+					<div className="py-12">
+						<div className="container mx-auto px-4">
+							<div className="max-w-3xl mx-auto text-center">
+								<p className="text-xl italic mb-4">&ldquo;{currentCategory.testimonial.text}&rdquo;</p>
+								<p className="font-bold">{currentCategory.testimonial.author}</p>
+								<p className="text-gray-400">{currentCategory.testimonial.position}</p>
+							</div>
+						</div>
+					</div>
+
+					{/* Sekcja CTA */}
+					<div className="py-16">
+						<div className="container mx-auto px-4 text-center">
+							<h2 className="text-3xl md:text-4xl font-bold mb-4">Zainteresowała Cię ta kategoria?</h2>
+							<p className="text-lg text-gray-300 mb-8">
+								Skontaktuj się ze mną, aby omówić szczegóły Twojego projektu w kategorii{' '}
+								{currentCategory.title.toLowerCase()}
+							</p>
+							<div className="flex flex-wrap justify-center gap-4">
+								<Link
+									href="/contact"
+									className="px-6 py-3 text-black font-bold rounded-lg hover:bg-opacity-80 transition-all"
+									style={{ backgroundColor: currentCategory.accent }}>
+									Umów konsultację
+								</Link>
+								<Link
+									href="/portfolio"
+									className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-all">
+									Inne kategorie
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</main>
+			</main>
+		</>
 	)
 }
