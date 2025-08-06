@@ -11,6 +11,7 @@ const Camera3D = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
+	const [loadingProgress, setLoadingProgress] = useState(0)
 
 	useEffect(() => {
 		let mounted = true
@@ -107,6 +108,15 @@ const Camera3D = () => {
 				return cachedModel.clone()
 			}
 
+			// Preload model w tle
+			const preloadModel = () => {
+				fetch('https://yelonmedia.s3.us-east-1.amazonaws.com/Model3D/scene.gltf', {
+					mode: 'cors',
+					priority: 'high',
+				}).catch(() => {}) // Silent preload
+			}
+			preloadModel()
+
 			try {
 				const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js')
 				const loader = new GLTFLoader()
@@ -114,15 +124,21 @@ const Camera3D = () => {
 				console.log('🚀 Ładowanie modelu aparatu')
 
 				const gltf = await new Promise<{ scene: Object3D }>((resolve, reject) => {
-					const timeout = setTimeout(() => reject(new Error('Timeout')), 8000)
+					const timeout = setTimeout(() => reject(new Error('Timeout')), 3000)
 
 					loader.load(
 						'https://yelonmedia.s3.us-east-1.amazonaws.com/Model3D/scene.gltf',
 						result => {
 							clearTimeout(timeout)
+							setLoadingProgress(100)
 							resolve(result)
 						},
-						undefined,
+						progress => {
+							if (progress.lengthComputable) {
+								const percent = (progress.loaded / progress.total) * 100
+								setLoadingProgress(percent)
+							}
+						},
 						error => {
 							clearTimeout(timeout)
 							reject(error)
@@ -313,7 +329,13 @@ const Camera3D = () => {
 				<div className="absolute inset-0 flex items-center justify-center bg-stone-900/50 rounded-2xl">
 					<div className="text-center text-white">
 						<div className="w-8 h-8 border-2 border-blue-300 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-						<div className="text-sm">Ładowanie modelu 3D...</div>
+						<div className="text-sm mb-2">Ładowanie modelu 3D...</div>
+						<div className="w-32 bg-gray-700 rounded-full h-2">
+							<div
+								className="bg-blue-300 h-2 rounded-full transition-all duration-300"
+								style={{ width: `${loadingProgress}%` }}></div>
+						</div>
+						<div className="text-xs mt-1">{Math.round(loadingProgress)}%</div>
 					</div>
 				</div>
 			)}
