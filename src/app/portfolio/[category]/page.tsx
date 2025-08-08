@@ -255,7 +255,7 @@ const categoryData = {
 	motoryzacja: {
 		title: 'Motoryzacja',
 		description: 'Sesje samochodowe i motoryzacyjne',
-		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01517.jpg',
+		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/8.jpg',
 		stats: { totalPhotos: 140, totalViews: '32k', avgRating: 4.8, completedProjects: 28 } as CategoryStats,
 		testimonial: {
 			text: 'Anna potrafi uchwycić dynamikę i elegancję samochodu w każdym ujęciu.',
