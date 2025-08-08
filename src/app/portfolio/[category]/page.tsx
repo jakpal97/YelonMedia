@@ -42,7 +42,7 @@ const categoryData = {
 	uslugi: {
 		title: 'Usługi',
 		description: 'Profesjonalne sesje usługowe dla firm i przedsiębiorców',
-		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06617.jpg',
+		heroImage: 'hhttps://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/3.jpg',
 		stats: { totalPhotos: 150, totalViews: '25k', avgRating: 4.9, completedProjects: 45 } as CategoryStats,
 		testimonial: {
 			text: 'Anna świetnie uchwycila charakter naszej firmy. Zdjęcia są profesjonalne i autentyczne.',
@@ -52,70 +52,70 @@ const categoryData = {
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC00353.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/1.jpg',
 				title: 'Salon fryzjerski',
 				alt: 'Profesjonalne zdjęcie salonu fryzjerskiego',
 				description: 'Sesja wizerunkowa dla salonu fryzjerskiego',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC00368.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/2.jpg',
 				title: 'Usługi fryzjerskie',
 				alt: 'Zdjęcie usług fryzjerskich',
 				description: 'Prezentacja usług fryzjerskich',
 			},
 			{
 				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC00386.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/1.jpg',
 				title: 'Studio tatuażu',
 				alt: 'Profesjonalne zdjęcie studia tatuażu',
 				description: 'Sesja wizerunkowa dla studia tatuażu',
 			},
 			{
 				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC04141.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/2.jpg',
 				title: 'Proces tatuowania',
 				alt: 'Zdjęcie procesu tatuowania',
 				description: 'Dokumentacja procesu tatuowania',
 			},
 			{
 				id: 5,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/DSC04523.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/3.jpg',
 				title: 'Sztuka tatuażu',
 				alt: 'Zdjęcie sztuki tatuażu',
 				description: 'Artystyczne ujęcie tatuażu',
 			},
 			{
 				id: 6,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06617.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/4.jpg',
 				title: 'Sztuka tatuażu',
 				alt: 'Zdjęcie sztuki tatuażu',
 				description: 'Artystyczne ujęcie tatuażu',
 			},
 			{
 				id: 7,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06714.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/5.jpg',
 				title: 'Sztuka tatuażu',
 				alt: 'Zdjęcie sztuki tatuażu',
 				description: 'Artystyczne ujęcie tatuażu',
 			},
 			{
 				id: 8,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06743.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/6.jpg',
 				title: 'Sztuka tatuażu',
 				alt: 'Zdjęcie sztuki tatuażu',
 				description: 'Artystyczne ujęcie tatuażu',
 			},
 			{
 				id: 9,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06960.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/7.jpg',
 				title: 'Sztuka tatuażu',
 				alt: 'Zdjęcie sztuki tatuażu',
 				description: 'Artystyczne ujęcie tatuażu',
 			},
 			{
 				id: 10,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06992.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/8.jpg',
 				title: 'Sztuka tatuażu',
 				alt: 'Zdjęcie sztuki tatuażu',
 				description: 'Artystyczne ujęcie tatuażu',
@@ -201,14 +201,14 @@ const categoryData = {
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC1960.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/1.jpg',
 				title: 'Signature dish',
 				alt: 'Zdjęcie autorskiego dania',
 				description: 'Autorskie danie szefa kuchni',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2607.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/2.jpg',
 				title: 'Deser artystyczny',
 				alt: 'Zdjęcie deseru',
 				description: 'Artystycznie podany deser',
@@ -265,70 +265,70 @@ const categoryData = {
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/przod.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/1.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC04920.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/2.jpg',
 				title: 'SUV terenowy',
 				alt: 'Zdjęcie SUVa terenowego',
 				description: 'Wytrzymały SUV terenowy',
 			},
 			{
 				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01517.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/3.jpg',
 				title: 'Kabriolet',
 				alt: 'Zdjęcie kabrioletu',
 				description: 'Elegancki kabriolet',
 			},
 			{
 				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01521.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/4.jpg',
 				title: 'Samochód sportowy',
 				alt: 'Zdjęcie samochodu sportowego',
 				description: 'Ekskluzywny samochód sportowy',
 			},
 			{
 				id: 5,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC05604.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/5.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
 				id: 6,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC05339.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/7.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
 				id: 7,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01937.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/8.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
 				id: 8,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/RSIDE.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/9.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
 				id: 9,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01792.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/10.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
 				id: 10,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01803.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/11.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
@@ -357,28 +357,28 @@ const categoryData = {
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC08100.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/1.jpg',
 				title: 'Portret klasyczny',
 				alt: 'Portret klasyczny w studio',
 				description: 'Profesjonalny portret w studio',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC07962.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/2.jpg',
 				title: 'Fashion Editorial',
 				alt: 'Zdjęcie fashion editorial',
 				description: 'Kreatywna sesja fashion',
 			},
 			{
 				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC08003.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/3.jpg',
 				title: 'Beauty Shot',
 				alt: 'Beauty shot w studio',
 				description: 'Profesjonalne zdjęcie beauty',
 			},
 			{
 				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC08100.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/4.jpg',
 				title: 'Dramatyczne światło',
 				alt: 'Portret z dramatycznym światłem',
 				description: 'Portret z wykorzystaniem dramatycznego światła',
@@ -400,28 +400,28 @@ const categoryData = {
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/_DSC3843.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/1.jpg',
 				title: 'Pierwszy taniec',
 				alt: 'Pierwszy taniec pary młodej',
 				description: 'Romantyczny pierwszy taniec',
 			},
 			{
 				id: 2,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/DSC00913.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/2.jpg',
 				title: 'Ceremonia ślubna',
 				alt: 'Ceremonia ślubna',
 				description: 'Wzruszający moment przysięgi',
 			},
 			{
 				id: 3,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/DSC00928-2.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/3.jpg',
 				title: 'Sesja plenerowa',
 				alt: 'Sesja plenerowa pary młodej',
 				description: 'Romantyczna sesja w plenerze',
 			},
 			{
 				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/DSC01395.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/4.jpg',
 				title: 'Detale ślubne',
 				alt: 'Detale ślubne',
 				description: 'Piękne detale ślubne',
@@ -567,179 +567,158 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 	const displayedImages = currentCategory.images
 
 	return (
-		<>
-			{/* Preload hero image */}
-			<head>
-				<link rel="preload" as="image" href={currentCategory.heroImage} />
-				{/* Preload pierwsze 3 zdjęcia z galerii */}
-				{currentCategory.images.slice(0, 3).map((image, index) => (
-					<link key={index} rel="preload" as="image" href={image.src} />
-				))}
-			</head>
-			<main className="min-h-screen bg-black text-white ">
-				<Navigation />
+		<main className="min-h-screen bg-black text-white ">
+			<Navigation />
 
-				{/* Hero section z przyciskiem powrotu */}
-				<div className="relative h-[70vh] overflow-hidden">
-					{/* Optimized hero image */}
-					<Image
-						src={currentCategory.heroImage}
-						alt={`Hero image - ${currentCategory.title}`}
-						fill
-						priority
-						quality={85}
-						sizes="100vw"
-						className="object-cover"
-						placeholder="blur"
-						blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-					/>
-					{/* Gradient overlay */}
-					<div
-						className="absolute inset-0"
-						style={{
-							background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))',
-						}}
-					/>
-					{/* Przycisk powrotu do portfolio */}
-					<Link
-						href="/portfolio"
-						className="absolute top-6 left-6 z-40 text-white p-3 rounded-full flex items-center hover:text-accent transition-colors">
-						<ArrowLeft size={20} className="mr-2" />
-						<span>Powrót do Portfolio</span>
-					</Link>
-
-					<div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-						<h1 className="text-5xl md:text-7xl font-bold mb-4" style={{ color: currentCategory.accent }}>
-							{currentCategory.title}
-						</h1>
-						<p className="text-lg md:text-2xl max-w-2xl">{currentCategory.description}</p>
-					</div>
-				</div>
-
-				{/* Galeria zdjęć */}
-				<div className="bg-black py-12">
-					<div className="container mx-auto px-4">
-						{/* Loading skeleton dla galerii */}
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-							{displayedImages.map((image: ImageData, index: number) => (
-								<div
-									key={image.id}
-									className="relative overflow-hidden rounded-lg border-2 border-transparent hover:border-accent transition-all duration-300 cursor-pointer"
-									style={{ borderColor: 'transparent', borderWidth: '2px' }}
-									onClick={() => openLightbox(index)}>
-									<div className="aspect-w-3 aspect-h-2 relative h-[250px]">
-										{/* Loading skeleton */}
-										<div className="absolute inset-0 bg-gray-800 animate-pulse rounded-lg" />
-										<Image
-											src={image.src}
-											alt={image.alt}
-											fill
-											className="object-cover"
-											sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
-											loading={index < 3 ? 'eager' : 'lazy'}
-											priority={index < 2}
-											quality={75}
-											placeholder="blur"
-											blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-										/>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-
-				{/* Lightbox Modal */}
-				{lightboxOpen && currentCategory && (
-					<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
-						{/* Przycisk zamknięcia */}
-						<button
-							onClick={closeLightbox}
-							className="absolute top-4 right-4 z-10 p-2 text-white hover:text-gray-300 transition-colors">
-							<X size={32} />
-						</button>
-
-						{/* Przycisk poprzednie zdjęcie */}
-						<button
-							onClick={previousImage}
-							className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
-							<ChevronLeft size={48} />
-						</button>
-
-						{/* Przycisk następne zdjęcie */}
-						<button
-							onClick={nextImage}
-							className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
-							<ChevronRight size={48} />
-						</button>
-
-						{/* Główne zdjęcie */}
-						<div className="relative max-w-7xl max-h-[90vh] mx-4">
-							{imageLoading && (
-								<div className="absolute inset-0 flex items-center justify-center bg-black/50">
-									<div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-								</div>
-							)}
-							<Image
-								src={currentCategory.images[currentImageIndex].src}
-								alt={currentCategory.images[currentImageIndex].alt}
-								width={1200}
-								height={800}
-								className="object-contain max-h-[80vh] w-auto"
-								sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 1200px"
-								priority
-								quality={85}
-								onLoad={() => setImageLoading(false)}
-								onLoadStart={() => setImageLoading(true)}
-							/>
-						</div>
-
-						{/* Overlay do zamykania */}
-						<div className="absolute inset-0 -z-10" onClick={closeLightbox}></div>
-					</div>
-				)}
-
-				{/* Wspólne tło dla opinii i CTA */}
+			{/* Hero section z przyciskiem powrotu */}
+			<div className="relative h-[70vh] overflow-hidden">
+				{/* Optimized hero image */}
+				<Image
+					src={currentCategory.heroImage}
+					alt={`Hero image - ${currentCategory.title}`}
+					fill
+					priority
+					sizes="100vw"
+					className="object-cover"
+				/>
+				{/* Gradient overlay */}
 				<div
+					className="absolute inset-0"
 					style={{
-						background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
-					}}>
-					{/* Opinia klienta */}
-					<div className="py-12">
-						<div className="container mx-auto px-4">
-							<div className="max-w-3xl mx-auto text-center">
-								<p className="text-xl italic mb-4">&ldquo;{currentCategory.testimonial.text}&rdquo;</p>
-								<p className="font-bold">{currentCategory.testimonial.author}</p>
-								<p className="text-gray-400">{currentCategory.testimonial.position}</p>
+						background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))',
+					}}
+				/>
+				{/* Przycisk powrotu do portfolio */}
+				<Link
+					href="/portfolio"
+					className="absolute top-6 left-6 z-40 text-white p-3 rounded-full flex items-center hover:text-accent transition-colors">
+					<ArrowLeft size={20} className="mr-2" />
+					<span>Powrót do Portfolio</span>
+				</Link>
+
+				<div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+					<h1 className="text-5xl md:text-7xl font-bold mb-4" style={{ color: currentCategory.accent }}>
+						{currentCategory.title}
+					</h1>
+					<p className="text-lg md:text-2xl max-w-2xl">{currentCategory.description}</p>
+				</div>
+			</div>
+
+			{/* Galeria zdjęć */}
+			<div className="bg-black py-12">
+				<div className="container mx-auto px-4">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{displayedImages.map((image: ImageData, index: number) => (
+							<div
+								key={image.id}
+								className="relative overflow-hidden rounded-lg border-2 border-transparent hover:border-accent transition-all duration-300 cursor-pointer"
+								style={{ borderColor: 'transparent', borderWidth: '2px' }}
+								onClick={() => openLightbox(index)}>
+								<div className="aspect-w-3 aspect-h-2 relative h-[250px]">
+									<Image
+										src={image.src}
+										alt={image.alt}
+										fill
+										className="object-cover"
+										sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
+										loading="lazy"
+									/>
+								</div>
 							</div>
-						</div>
+						))}
+					</div>
+				</div>
+			</div>
+
+			{/* Lightbox Modal */}
+			{lightboxOpen && currentCategory && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
+					{/* Przycisk zamknięcia */}
+					<button
+						onClick={closeLightbox}
+						className="absolute top-4 right-4 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+						<X size={32} />
+					</button>
+
+					{/* Przycisk poprzednie zdjęcie */}
+					<button
+						onClick={previousImage}
+						className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+						<ChevronLeft size={48} />
+					</button>
+
+					{/* Przycisk następne zdjęcie */}
+					<button
+						onClick={nextImage}
+						className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors">
+						<ChevronRight size={48} />
+					</button>
+
+					{/* Główne zdjęcie */}
+					<div className="relative max-w-7xl max-h-[90vh] mx-4">
+						{imageLoading && (
+							<div className="absolute inset-0 flex items-center justify-center bg-black/50">
+								<div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+							</div>
+						)}
+						<Image
+							src={currentCategory.images[currentImageIndex].src}
+							alt={currentCategory.images[currentImageIndex].alt}
+							width={1200}
+							height={800}
+							className="object-contain max-h-[80vh] w-auto"
+							sizes="(max-width: 768px) 95vw, (max-width: 1200px) 90vw, 1200px"
+							priority
+							onLoad={() => setImageLoading(false)}
+							onLoadStart={() => setImageLoading(true)}
+						/>
 					</div>
 
-					{/* Sekcja CTA */}
-					<div className="py-16">
-						<div className="container mx-auto px-4 text-center">
-							<h2 className="text-3xl md:text-4xl font-bold mb-4">Zainteresowała Cię ta kategoria?</h2>
-							<p className="text-lg text-gray-300 mb-8">
-								Skontaktuj się ze mną, aby omówić szczegóły Twojego projektu w kategorii{' '}
-								{currentCategory.title.toLowerCase()}
-							</p>
-							<div className="flex flex-wrap justify-center gap-4">
-								<Link
-									href="/contact"
-									className="px-6 py-3 text-black font-bold rounded-lg hover:bg-opacity-80 transition-all"
-									style={{ backgroundColor: currentCategory.accent }}>
-									Umów konsultację
-								</Link>
-								<Link
-									href="/portfolio"
-									className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-all">
-									Inne kategorie
-								</Link>
-							</div>
+					{/* Overlay do zamykania */}
+					<div className="absolute inset-0 -z-10" onClick={closeLightbox}></div>
+				</div>
+			)}
+
+			{/* Wspólne tło dla opinii i CTA */}
+			<div
+				style={{
+					background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
+				}}>
+				{/* Opinia klienta */}
+				<div className="py-12">
+					<div className="container mx-auto px-4">
+						<div className="max-w-3xl mx-auto text-center">
+							<p className="text-xl italic mb-4">&ldquo;{currentCategory.testimonial.text}&rdquo;</p>
+							<p className="font-bold">{currentCategory.testimonial.author}</p>
+							<p className="text-gray-400">{currentCategory.testimonial.position}</p>
 						</div>
 					</div>
 				</div>
-			</main>
-		</>
+
+				{/* Sekcja CTA */}
+				<div className="py-16">
+					<div className="container mx-auto px-4 text-center">
+						<h2 className="text-3xl md:text-4xl font-bold mb-4">Zainteresowała Cię ta kategoria?</h2>
+						<p className="text-lg text-gray-300 mb-8">
+							Skontaktuj się ze mną, aby omówić szczegóły Twojego projektu w kategorii{' '}
+							{currentCategory.title.toLowerCase()}
+						</p>
+						<div className="flex flex-wrap justify-center gap-4">
+							<Link
+								href="/contact"
+								className="px-6 py-3 text-black font-bold rounded-lg hover:bg-opacity-80 transition-all"
+								style={{ backgroundColor: currentCategory.accent }}>
+								Umów konsultację
+							</Link>
+							<Link
+								href="/portfolio"
+								className="px-6 py-3 bg-transparent border border-white text-white rounded-lg hover:bg-white/10 transition-all">
+								Inne kategorie
+							</Link>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 	)
 }
