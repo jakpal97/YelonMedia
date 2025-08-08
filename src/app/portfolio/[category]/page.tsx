@@ -42,7 +42,7 @@ const categoryData = {
 	uslugi: {
 		title: 'Usługi',
 		description: 'Profesjonalne sesje usługowe dla firm i przedsiębiorców',
-		heroImage: 'hhttps://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/3.jpg',
+		heroImage: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/3.jpg',
 		stats: { totalPhotos: 150, totalViews: '25k', avgRating: 4.9, completedProjects: 45 } as CategoryStats,
 		testimonial: {
 			text: 'Anna świetnie uchwycila charakter naszej firmy. Zdjęcia są profesjonalne i autentyczne.',
@@ -578,6 +578,7 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 					alt={`Hero image - ${currentCategory.title}`}
 					fill
 					priority
+					fetchPriority="high"
 					sizes="100vw"
 					className="object-cover"
 				/>
@@ -684,7 +685,7 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 				style={{
 					background: 'linear-gradient(325deg, #60a5fa -10%, #111 40%, #000 100%)',
 				}}>
-				{/* Opinia klienta */}
+				{/* Opinia klienta
 				<div className="py-12">
 					<div className="container mx-auto px-4">
 						<div className="max-w-3xl mx-auto text-center">
@@ -693,7 +694,7 @@ export default function CategoryPage({ params }: { params: Promise<{ category: s
 							<p className="text-gray-400">{currentCategory.testimonial.position}</p>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 				{/* Sekcja CTA */}
 				<div className="py-16">

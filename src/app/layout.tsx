@@ -71,6 +71,8 @@ export default function RootLayout({
 
 				{/* DNS prefetch dla zewnętrznych domen */}
 				<link rel="dns-prefetch" href="https://yelonmedia.s3.us-east-1.amazonaws.com" />
+				{/* Preconnect do S3 dla szybszego ładowania obrazów */}
+				<link rel="preconnect" href="https://yelonmedia.s3.us-east-1.amazonaws.com" crossOrigin="anonymous" />
 			</head>
 			<body
 				className={`${playfairDisplay.className} bg-stone-900 text-stone-100 overflow-x-hidden`}
