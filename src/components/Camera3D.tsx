@@ -104,7 +104,6 @@ const Camera3D = () => {
 		const loadModel = async (): Promise<Object3D | null> => {
 			// Używaj cache jeśli dostępny
 			if (cachedModel) {
-				console.log('📦 Używam cache modelu')
 				return cachedModel.clone()
 			}
 
@@ -124,12 +123,9 @@ const Camera3D = () => {
 				console.log('🚀 Ładowanie modelu aparatu')
 
 				const gltf = await new Promise<{ scene: Object3D }>((resolve, reject) => {
-					const timeout = setTimeout(() => reject(new Error('Timeout')), 3000)
-
 					loader.load(
 						'https://yelonmedia.s3.us-east-1.amazonaws.com/Model3D/scene.gltf',
 						result => {
-							clearTimeout(timeout)
 							setLoadingProgress(100)
 							resolve(result)
 						},
@@ -140,7 +136,6 @@ const Camera3D = () => {
 							}
 						},
 						error => {
-							clearTimeout(timeout)
 							reject(error)
 						}
 					)
