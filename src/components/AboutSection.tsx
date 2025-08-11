@@ -1,6 +1,7 @@
 'use client'
 
 import Stack from './Stack'
+import { Facebook, Instagram, ArrowRight } from 'lucide-react'
 
 // Statyczne dane dla sekcji About
 const aboutData = {
@@ -14,7 +15,14 @@ const aboutData = {
 		experience: { number: '3', label: 'Lat Doświadczenia' },
 		weddings: { number: '100+', label: 'Sesji' },
 	},
-	photos: ['/ISIMG-826079.JPG', '/IMG_0315.JPG', '/IMG_1454.JPG', '/DSC09334.JPG', '/IMG_7002.JPG'],
+	photos: [
+		'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/6.jpg',
+		'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/5.jpg',
+		'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/2.jpg',
+		'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/3.jpg',
+		'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC03747.jpg',
+		'/IMG_7002.JPG',
+	],
 }
 
 const AboutSection = () => {
@@ -43,17 +51,33 @@ const AboutSection = () => {
 							</p>
 
 							<div className="grid grid-cols-3 gap-6 mt-8">
-								<div className="text-center p-4 bg-card rounded-xl">
-									<div className="text-3xl font-bold text-accent">{aboutData.stats.clients.number}</div>
-									<div className="text-base font-semibold text-stone-400 mt-1">{aboutData.stats.clients.label}</div>
-								</div>
-								<div className="text-center p-4 bg-card rounded-xl">
-									<div className="text-3xl font-bold text-accent">{aboutData.stats.experience.number}</div>
-									<div className="text-base font-semibold text-stone-400 mt-1">{aboutData.stats.experience.label}</div>
-								</div>
-								<div className="text-center p-4 bg-card rounded-xl">
-									<div className="text-3xl font-bold text-accent">{aboutData.stats.weddings.number}</div>
-									<div className="text-base font-semibold text-stone-400 mt-1">{aboutData.stats.weddings.label}</div>
+								<a
+									href="https://facebook.com/yelonmedia"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="group text-center p-4 bg-card rounded-xl border border-stone-700 hover:border-stone-500 transition-colors">
+									<div className="mx-auto w-12 h-12 rounded-full bg-blue-300/15 text-blue-300 flex items-center justify-center group-hover:bg-blue-300/25 transition-colors">
+										<Facebook className="w-7 h-7" />
+									</div>
+									<div className="text-sm font-semibold text-stone-300 mt-3">Facebook</div>
+								</a>
+
+								<a
+									href="https://instagram.com/yelonmedia"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="group text-center p-4 bg-card rounded-xl border border-stone-700 hover:border-stone-500 transition-colors">
+									<div className="mx-auto w-12 h-12 rounded-full bg-pink-300/15 text-pink-300 flex items-center justify-center group-hover:bg-pink-300/25 transition-colors">
+										<Instagram className="w-7 h-7" />
+									</div>
+									<div className="text-sm font-semibold text-stone-300 mt-3">Instagram</div>
+								</a>
+
+								<div className="text-center p-4 bg-card rounded-xl border border-stone-700">
+									<div className="mx-auto w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center animate-pulse">
+										<ArrowRight className="w-7 h-7" />
+									</div>
+									<div className="text-sm font-extrabold text-stone-100 mt-3 uppercase tracking-wider">Try me</div>
 								</div>
 							</div>
 						</div>

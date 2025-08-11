@@ -286,7 +286,7 @@ const categoryData = {
 		images: [
 			{
 				id: 1,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/1.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/4.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
@@ -307,7 +307,7 @@ const categoryData = {
 			},
 			{
 				id: 4,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/4.jpg',
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/1.jpg',
 				title: 'Samochód sportowy',
 				alt: 'Zdjęcie samochodu sportowego',
 				description: 'Ekskluzywny samochód sportowy',
@@ -361,43 +361,37 @@ const categoryData = {
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
+			
 			{
 				id: 12,
-				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/13.jpg',
-				title: 'Sportowy sedan',
-				alt: 'Zdjęcie sportowego sedana',
-				description: 'Luksusowy sportowy sedan',
-			},
-			{
-				id: 13,
 				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/12.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
-				id: 14,
+				id: 13,
 				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/14.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
-				id: 15,
+				id: 14,
 				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/15.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
-				id: 16,
+				id: 15,
 				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/16.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
 				description: 'Luksusowy sportowy sedan',
 			},
 			{
-				id: 17,
+				id: 16,
 				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC03747.jpg',
 				title: 'Sportowy sedan',
 				alt: 'Zdjęcie sportowego sedana',
