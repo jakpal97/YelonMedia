@@ -183,13 +183,9 @@ const portfolioImages = [
 ]
 
 const PortfolioSection = () => {
-	const [currentCategory, setCurrentCategory] = useState('Wszystkie')
-	const [autoPlaySpeed, setAutoPlaySpeed] = useState(3000)
+	const [currentCategory] = useState('Wszystkie')
 	const [currentPage, setCurrentPage] = useState(0)
 	const imagesPerPage = 12
-
-	// Kategorie do filtrowania
-	const categories = ['Wszystkie', 'Usługi', 'Eventy', 'Gastro', 'Motoryzacja', 'Wesela', 'Studia']
 
 	// Filtrowanie zdjęć według kategorii
 	const filteredImages =
