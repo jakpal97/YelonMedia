@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import Navigation from '@/components/Navigation'
+import SplashScreen from '@/components/SplashScreen'
 
 // Lazy loading komponentów
 const HeroSection = lazy(() => import('@/components/HeroSection'))
@@ -25,6 +26,8 @@ export const revalidate = 86400 // Odświeżanie co 24h (w sekundach)
 export default function Home() {
 	return (
 		<main className="min-h-screen">
+			{/* Splash screen renderowany na wierzchu przez kilka sekund */}
+			<SplashScreen durationMs={4000} />
 			<Navigation />
 			<Suspense fallback={<LoadingSection height="min-h-[80vh]" text="Ładowanie sekcji głównej..." />}>
 				<HeroSection />
