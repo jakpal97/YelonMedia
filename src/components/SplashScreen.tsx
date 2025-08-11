@@ -29,14 +29,14 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 	const stickers = useMemo(
 		() => [
 			// Sekwencja pojawiania (co ~200ms) - znacznie powiększone zdjęcia
-			{ src: '/IMG_1454.JPG', className: 'top-[5%] left-[3%] rotate-[-8deg] hover:rotate-[-5deg] hover:scale-110', w: 260, h: 195, delay: 0 },
-			{ src: '/IMG_0315.JPG', className: 'top-[12%] right-[5%] rotate-[6deg] hover:rotate-[9deg] hover:scale-110', w: 250, h: 185, delay: 200 },
-			{ src: '/DSC09334.JPG', className: 'bottom-[8%] left-[6%] rotate-[4deg] hover:rotate-[7deg] hover:scale-110', w: 280, h: 210, delay: 400 },
-			{ src: '/IMG_7002.JPG', className: 'bottom-[12%] right-[8%] rotate-[-5deg] hover:rotate-[-2deg] hover:scale-110', w: 240, h: 180, delay: 600 },
-			{ src: '/ISIMG-826079.JPG', className: 'top-[22%] left-[20%] rotate-[2deg] hover:rotate-[5deg] hover:scale-110', w: 240, h: 180, delay: 800 },
-			{ src: '/IMG_1454.JPG', className: 'bottom-[22%] right-[20%] rotate-[8deg] hover:rotate-[11deg] hover:scale-110', w: 230, h: 175, delay: 1000 },
-			{ src: '/IMG_0315.JPG', className: 'top-[28%] right-[30%] rotate-[3deg] hover:rotate-[6deg] hover:scale-110', w: 250, h: 185, delay: 1200 },
-			{ src: '/DSC09334.JPG', className: 'bottom-[18%] left-[30%] rotate-[-7deg] hover:rotate-[-4deg] hover:scale-110', w: 260, h: 195, delay: 1400 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/5.jpg', className: 'top-[5%] left-[3%] rotate-[-8deg] hover:rotate-[-5deg] hover:scale-110', w: 260, h: 195, delay: 0 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/2.jpg', className: 'top-[12%] right-[5%] rotate-[6deg] hover:rotate-[9deg] hover:scale-110', w: 250, h: 185, delay: 200 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/3.jpg', className: 'bottom-[8%] left-[6%] rotate-[4deg] hover:rotate-[7deg] hover:scale-110', w: 280, h: 210, delay: 400 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC03747.jpg', className: 'bottom-[12%] right-[8%] rotate-[-5deg] hover:rotate-[-2deg] hover:scale-110', w: 240, h: 180, delay: 600 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/6.jpg', className: 'top-[22%] left-[20%] rotate-[2deg] hover:rotate-[5deg] hover:scale-110', w: 240, h: 180, delay: 800 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/8.jpg', className: 'bottom-[22%] right-[20%] rotate-[8deg] hover:rotate-[11deg] hover:scale-110', w: 230, h: 175, delay: 1000 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/1.jpg', className: 'top-[28%] right-[30%] rotate-[3deg] hover:rotate-[6deg] hover:scale-110', w: 250, h: 185, delay: 1200 },
+			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/5.jpg', className: 'bottom-[18%] left-[30%] rotate-[-7deg] hover:rotate-[-4deg] hover:scale-110', w: 260, h: 195, delay: 1400 },
 		],
 		[]
 	)
@@ -106,7 +106,7 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 									imageRendering: 'auto',
 								}}
 								priority={idx < 4}
-								quality={95}
+								quality={75}
 							/>
 							{/* Dodatkowy efekt świetlny */}
 							<div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
