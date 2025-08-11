@@ -15,9 +15,10 @@ const Navigation = () => {
 	// Określam aktywny indeks na podstawie ścieżki
 	const getActiveIndex = () => {
 		if (pathname === '/') return 0
-		if (pathname === '/portfolio') return 2
+		if (pathname === '/portfolio' || pathname === '/portfolio/eventy' || pathname === '/portfolio/gastro' ||pathname === '/portfolio/uslugi' || pathname === '/portfolio/motoryzacja' || pathname === '/portfolio/moda') return 2
 		if (pathname === '/blog') return 3
 		if (pathname === '/contact') return 4
+		
 		return 0 // domyślnie Start
 	}
 
