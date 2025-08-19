@@ -52,7 +52,7 @@ const AboutSection = () => {
 
 							<div className="grid grid-cols-3 gap-6 mt-8">
 								<a
-									href="https://facebook.com/yelonmedia"
+									href="https://www.facebook.com/profile.php?id=61579655309808"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="group text-center p-4 bg-card rounded-xl border border-stone-700 hover:border-stone-500 transition-colors">
@@ -63,7 +63,7 @@ const AboutSection = () => {
 								</a>
 
 								<a
-									href="https://instagram.com/yelonmedia"
+									href="https://www.instagram.com/yelon.media/"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="group text-center p-4 bg-card rounded-xl border border-stone-700 hover:border-stone-500 transition-colors">

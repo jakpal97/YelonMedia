@@ -71,7 +71,7 @@ const HeroSection = () => {
 				{/* Social Media Icons - Prawy górny róg */}
 				<div className="absolute top-24 right-6 z-20 hidden md:flex space-x-3">
 					<a
-						href="https://facebook.com/yelonmedia"
+						href="https://www.facebook.com/profile.php?id=61579655309808"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300 border border-white/20">
@@ -80,7 +80,7 @@ const HeroSection = () => {
 						</svg>
 					</a>
 					<a
-						href="https://instagram.com/yelonmedia"
+						href="https://www.instagram.com/yelon.media/"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300 border border-white/20">

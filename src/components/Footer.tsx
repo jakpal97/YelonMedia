@@ -25,10 +25,10 @@ const Footer = () => {
 			</nav>
 			{/* Social media */}
 			<div className="flex justify-center gap-8 text-2xl text-[#222] mt-2">
-				<a href="#" className="hover:text-blue-400 transition-colors" aria-label="Facebook">
+				<a href="https://www.facebook.com/profile.php?id=61579655309808" className="hover:text-blue-400 transition-colors" aria-label="Facebook">
 					<FaFacebookF />
 				</a>
-				<a href="#" className="hover:text-blue-400 transition-colors" aria-label="Instagram">
+				<a href="https://www.instagram.com/yelon.media/" className="hover:text-blue-400 transition-colors" aria-label="Instagram">
 					<FaInstagram />
 				</a>
 				
