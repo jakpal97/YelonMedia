@@ -65,7 +65,7 @@ async function getPortfolioItems() {
 			url: '/portfolio/wesela',
 		},
 		{
-			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/DSC08100.jpg',
+			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/3.jpg',
 			title: 'Moda',
 			subtitle: 'Profesjonalne sesje studyjne',
 			handle: '@studia',
