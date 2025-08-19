@@ -136,14 +136,7 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-2xl animate-pulse"></div>
 						</h1>
 						
-						{/* Subtext z opóźnieniem */}
-						<p 
-							className={`text-gray-300 text-lg md:text-xl font-light tracking-wider transition-all duration-800 ${
-								mounted ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-4'
-							}`}
-							style={{ transitionDelay: '1000ms' }}>
-							Chwile zamknięte w kadrze
-						</p>
+						
 					</div>
 				</div>
 
