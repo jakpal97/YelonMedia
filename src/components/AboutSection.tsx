@@ -7,9 +7,9 @@ import { Facebook, Instagram, ArrowRight } from 'lucide-react'
 const aboutData = {
 	title: 'O Mnie',
 	subtitle: 'Jestem Tomek, fotografia jest pasją, która pozwala mi uwieczniać najważniejsze momenty życia.',
-	description1: 'Od ponad 3 lat zajmuje się tworzeniem materiałów reklamowych w postaci zdjęć i filmów.',
+	description1: 'Od ponad 3 lat zajmuję się tworzeniem materiałów reklamowych w postaci zdjęć i filmów.',
 	description2:
-		'W fotografii ograniczyć nas może tylko wyobraźnia, dla tego jeśli chcesz stworzyć razem ze mną coś wyjątkowego, zapraszam do kontaktu.',
+		'W fotografii ograniczyć nas może tylko wyobraźnia, dlatego jeśli chcesz stworzyć razem ze mną coś wyjątkowego, zapraszam do kontaktu.',
 	stats: {
 		clients: { number: '100', label: 'Zadowolonych Klientów' },
 		experience: { number: '3', label: 'Lat Doświadczenia' },
