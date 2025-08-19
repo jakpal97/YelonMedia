@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react'
 import Navigation from '@/components/Navigation'
 import SplashScreen from '@/components/SplashScreen'
+import { Analytics } from '@vercel/analytics/next';
 
 // Lazy loading komponentów
 const HeroSection = lazy(() => import('@/components/HeroSection'))
@@ -44,6 +45,7 @@ export default function Home() {
 			<Suspense fallback={<LoadingSection text="Ładowanie stopki..." />}>
 				<Footer />
 			</Suspense>
+			<Analytics />
 		</main>
 	)
 }
