@@ -20,7 +20,7 @@ async function getPortfolioItems() {
 	// Tutaj używamy danych statycznych
 	return [
 		{
-			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Salony+Fryzjerskie/DSC06617.jpg',
+			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/6.jpg',
 			title: 'Usługi',
 			subtitle: 'Profesjonalne sesje usługowe',
 			handle: '@uslugi',
@@ -38,7 +38,7 @@ async function getPortfolioItems() {
 			url: '/portfolio/eventy',
 		},
 		{
-			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/_DSC2877.jpg',
+			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/2.jpg',
 			title: 'Gastro',
 			subtitle: 'Fotografia kulinarna i restauracyjna',
 			handle: '@gastro',
@@ -47,7 +47,7 @@ async function getPortfolioItems() {
 			url: '/portfolio/gastro',
 		},
 		{
-			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC01517.jpg',
+			image: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/3.jpg',
 			title: 'Motoryzacja',
 			subtitle: 'Sesje samochodowe i motoryzacyjne',
 			handle: '@motoryzacja',
@@ -114,7 +114,7 @@ export default async function Portfolio() {
 						Moje Portfolio
 					</h1>
 					<p className="text-xl text-stone-300 max-w-3xl mx-auto leading-relaxed font-bold">
-						Odkryj różnorodność moich usług fotograficznych. Każda kategoria reprezentuje unikalne podejście do
+						Odkryj różnorodność moich usług fotograficznych. Każda kategoria reprezentuje unikatowe podejście do
 						fotografii.
 					</p>
 				</div>
