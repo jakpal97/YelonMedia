@@ -82,7 +82,7 @@ const AboutSection = () => {
 							</div>
 						</div>
 
-						<div className="relative flex justify-center items-center min-h-[600px]">
+						<div className="relative justify-center items-center min-h-[600px] hidden lg:flex">
 							<Stack
 								randomRotation={true}
 								sensitivity={180}

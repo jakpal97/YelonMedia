@@ -131,7 +131,7 @@ const HeroSection = () => {
 
 						{/* Right Column - 3D Camera */}
 						<div
-							className={`flex justify-center lg:justify-end transition-all duration-1000 ${
+							className={`hidden lg:flex justify-center lg:justify-end transition-all duration-1000 ${
 								isVisible ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform translate-x-10'
 							}`}
 							style={{ transitionDelay: '1200ms' }}>
