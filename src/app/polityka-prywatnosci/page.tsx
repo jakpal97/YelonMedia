@@ -17,7 +17,7 @@ export default function PolitykaPrywatnosciPage() {
 						<p>
 							Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych przekazanych przez
 							Użytkowników w związku z korzystaniem z usług świadczonych przez Yelon Media Tomasz [Nazwisko], zwanych
-							dalej „Usługodawcą".
+							dalej „Usługodawcą&rdquo;.
 						</p>
 						<h3 className="text-xl font-semibold mt-6">Dane kontaktowe Administratora:</h3>
 						<ul className="list-disc list-inside space-y-1">
