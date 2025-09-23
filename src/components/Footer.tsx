@@ -13,7 +13,7 @@ const Footer = () => {
 					Start
 				</a>
 				<a href="#" className="hover:text-blue-400 transition-colors">
-				 O Mnie
+					O Mnie
 				</a>
 				<a href="yelonmedia.pl/portfolio" className="hover:text-blue-400 transition-colors">
 					Portfolio
@@ -21,17 +21,27 @@ const Footer = () => {
 				<a href="yelonmedia.pl/kontakt" className="hover:text-blue-400 transition-colors">
 					Kontakt
 				</a>
-				
+				<a href="/regulamin" className="hover:text-blue-400 transition-colors">
+					Regulamin
+				</a>
+				<a href="/polityka-prywatnosci" className="hover:text-blue-400 transition-colors">
+					Polityka Prywatności
+				</a>
 			</nav>
 			{/* Social media */}
 			<div className="flex justify-center gap-8 text-2xl text-[#222] mt-2">
-				<a href="https://www.facebook.com/profile.php?id=61579655309808" className="hover:text-blue-400 transition-colors" aria-label="Facebook">
+				<a
+					href="https://www.facebook.com/profile.php?id=61579655309808"
+					className="hover:text-blue-400 transition-colors"
+					aria-label="Facebook">
 					<FaFacebookF />
 				</a>
-				<a href="https://www.instagram.com/yelon.media/" className="hover:text-blue-400 transition-colors" aria-label="Instagram">
+				<a
+					href="https://www.instagram.com/yelon.media/"
+					className="hover:text-blue-400 transition-colors"
+					aria-label="Instagram">
 					<FaInstagram />
 				</a>
-				
 			</div>
 			{/* Copyright */}
 			<div className="text-[#222] text-sm mt-2 font-courier-prime text-center">
