@@ -1,0 +1,19 @@
+# Robots.txt dla yelonmedia.pl
+
+User-agent: *
+Allow: /
+
+# Pozwól na indeksowanie wszystkich stron
+Allow: /portfolio/
+Allow: /contact/
+Allow: /regulamin/
+Allow: /polityka-prywatnosci/
+
+# Blokuj pliki systemowe
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Mapa witryny
+Sitemap: https://yelonmedia.pl/sitemap.xml
+
