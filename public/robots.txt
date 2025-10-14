@@ -1,19 +1,40 @@
 # Robots.txt dla yelonmedia.pl
 
-User-agent: *
+# Dobre boty - pełen dostęp
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: YandexBot
+User-agent: facebot
+User-agent: ia_archiver
 Allow: /
 
-# Pozwól na indeksowanie wszystkich stron
-Allow: /portfolio/
-Allow: /contact/
-Allow: /regulamin/
-Allow: /polityka-prywatnosci/
-
-# Blokuj pliki systemowe
+# Blokuj katalogi techniczne dla wszystkich
+User-agent: *
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
+Disallow: /*.json$
+
+# Blokuj złe boty - scrapers, spamerzy, narzędzia SEO
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+User-agent: MJ12bot
+User-agent: BLEXBot
+User-agent: PetalBot
+User-agent: SEMrushBot
+User-agent: Screaming Frog SEO Spider
+User-agent: rogerbot
+User-agent: Exabot
+User-agent: serpstatbot
+User-agent: MegaIndex.ru
+User-agent: spbot
+User-agent: ZoominfoBot
+User-agent: DataForSeoBot
+Disallow: /
 
 # Mapa witryny
 Sitemap: https://yelonmedia.pl/sitemap.xml
-
