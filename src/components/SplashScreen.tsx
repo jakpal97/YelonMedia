@@ -14,12 +14,12 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 
 	useEffect(() => {
 		setMounted(true)
-		
+
 		// Animacja logo z opóźnieniem
 		const logoTimer = setTimeout(() => setLogoAnimated(true), 300)
-		
+
 		const id = window.setTimeout(() => setVisible(false), durationMs)
-		
+
 		return () => {
 			window.clearTimeout(id)
 			clearTimeout(logoTimer)
@@ -29,17 +29,70 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 	const stickers = useMemo(
 		() => [
 			// Sekwencja pojawiania (co ~200ms) - znacznie powiększone zdjęcia
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/5.jpg', className: 'top-[5%] left-[3%] rotate-[-8deg] hover:rotate-[-5deg] hover:scale-110', w: 260, h: 195, delay: 0 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/2.jpg', className: 'top-[12%] right-[5%] rotate-[6deg] hover:rotate-[9deg] hover:scale-110', w: 250, h: 185, delay: 200 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/3.jpg', className: 'bottom-[8%] left-[6%] rotate-[4deg] hover:rotate-[7deg] hover:scale-110', w: 280, h: 210, delay: 400 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC03747.jpg', className: 'bottom-[12%] right-[8%] rotate-[-5deg] hover:rotate-[-2deg] hover:scale-110', w: 240, h: 180, delay: 600 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/6.jpg', className: 'top-[22%] left-[20%] rotate-[2deg] hover:rotate-[5deg] hover:scale-110', w: 240, h: 180, delay: 800 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/8.jpg', className: 'bottom-[22%] right-[20%] rotate-[8deg] hover:rotate-[11deg] hover:scale-110', w: 230, h: 175, delay: 1000 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/1.jpg', className: 'top-[28%] right-[30%] rotate-[3deg] hover:rotate-[6deg] hover:scale-110', w: 250, h: 185, delay: 1200 },
-			{ src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/5.jpg', className: 'bottom-[18%] left-[30%] rotate-[-7deg] hover:rotate-[-4deg] hover:scale-110', w: 260, h: 195, delay: 1400 },
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Eventy/5.jpg',
+				className: 'top-[5%] left-[3%] rotate-[-8deg] hover:rotate-[-5deg] hover:scale-110',
+				w: 260,
+				h: 195,
+				delay: 0,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Gastro/2.jpg',
+				className: 'top-[12%] right-[5%] rotate-[6deg] hover:rotate-[9deg] hover:scale-110',
+				w: 250,
+				h: 185,
+				delay: 200,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Modowe/3.jpg',
+				className: 'bottom-[8%] left-[6%] rotate-[4deg] hover:rotate-[7deg] hover:scale-110',
+				w: 280,
+				h: 210,
+				delay: 400,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/DSC03747.jpg',
+				className: 'bottom-[12%] right-[8%] rotate-[-5deg] hover:rotate-[-2deg] hover:scale-110',
+				w: 240,
+				h: 180,
+				delay: 600,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/6.jpg',
+				className: 'top-[22%] left-[20%] rotate-[2deg] hover:rotate-[5deg] hover:scale-110',
+				w: 240,
+				h: 180,
+				delay: 800,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Motoryzacja/8.jpg',
+				className: 'bottom-[22%] right-[20%] rotate-[8deg] hover:rotate-[11deg] hover:scale-110',
+				w: 230,
+				h: 175,
+				delay: 1000,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Wesela/1.jpg',
+				className: 'top-[28%] right-[30%] rotate-[3deg] hover:rotate-[6deg] hover:scale-110',
+				w: 250,
+				h: 185,
+				delay: 1200,
+			},
+			{
+				src: 'https://yelonmedia.s3.us-east-1.amazonaws.com/Studia+Tattoo/5.jpg',
+				className: 'bottom-[18%] left-[30%] rotate-[-7deg] hover:rotate-[-4deg] hover:scale-110',
+				w: 260,
+				h: 195,
+				delay: 1400,
+			},
 		],
 		[]
 	)
+
+	// Zapobiegaj hydratacji - renderuj tylko po zamontowaniu
+	if (!mounted) {
+		return null
+	}
 
 	return (
 		<div
@@ -47,7 +100,6 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 				visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none scale-110'
 			}`}
 			aria-hidden={!visible}>
-			
 			{/* Animowane tło z delikatnym wzorem */}
 			<div className="absolute inset-0 opacity-10">
 				<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-pulse"></div>
@@ -57,16 +109,14 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 				{/* Logo z zaawansowaną animacją */}
 				<div
 					className={`absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-3 transform transition-all duration-1000 ease-out ${
-						logoAnimated 
-							? 'opacity-100 translate-y-0 scale-100' 
-							: 'opacity-0 -translate-y-8 scale-90'
+						logoAnimated ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-8 scale-90'
 					}`}>
 					<div className="relative">
-						<Image 
-							src="/logoyelon.png" 
-							alt="logo" 
-							width={48} 
-							height={48} 
+						<Image
+							src="/logoyelon.png"
+							alt="logo"
+							width={48}
+							height={48}
 							className={`w-12 h-12 object-contain transition-transform duration-300 ${
 								logoAnimated ? 'animate-pulse' : ''
 							}`}
@@ -74,9 +124,10 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 						/>
 						<div className="absolute inset-0 bg-white/20 rounded-full blur-xl scale-150 opacity-40 animate-ping"></div>
 					</div>
-					<span className={`text-white font-bold tracking-widest text-lg transition-all duration-700 ${
-						logoAnimated ? 'translate-x-0' : 'translate-x-4'
-					}`}>
+					<span
+						className={`text-white font-bold tracking-widest text-lg transition-all duration-700 ${
+							logoAnimated ? 'translate-x-0' : 'translate-x-4'
+						}`}>
 						YELON MEDIA
 					</span>
 				</div>
@@ -86,11 +137,16 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 					{stickers.map((s, idx) => (
 						<div
 							key={`${s.src}-${idx}`}
-							className={`absolute ${s.className.split(' ').slice(0, -2).join(' ')} transition-all duration-500 ease-out`}
+							className={`absolute ${s.className
+								.split(' ')
+								.slice(0, -2)
+								.join(' ')} transition-all duration-500 ease-out`}
 							style={{
 								opacity: mounted ? 1 : 0,
-								transform: mounted 
-									? `${s.className.includes('rotate') ? s.className.match(/rotate-\[([^\]]+)\]/)?.[0] || '' : ''} scale(1)` 
+								transform: mounted
+									? `${
+											s.className.includes('rotate') ? s.className.match(/rotate-\[([^\]]+)\]/)?.[0] || '' : ''
+									  } scale(1)`
 									: 'scale(0.8) translateY(20px)',
 								transitionDelay: `${s.delay}ms`,
 								filter: 'brightness(1.1) contrast(1.2) saturate(1.1)',
@@ -118,9 +174,7 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 				<div className="absolute inset-0 flex items-center justify-center translate-y-8">
 					<div
 						className={`text-center px-6 transform transition-all duration-1200 ease-out ${
-							mounted 
-								? 'opacity-100 translate-y-0 scale-100' 
-								: 'opacity-0 translate-y-6 scale-95'
+							mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-6 scale-95'
 						}`}
 						style={{ transitionDelay: '600ms' }}>
 						<h1 className="relative text-4xl md:text-6xl font-black tracking-wide text-white mb-4">
@@ -131,12 +185,10 @@ export default function SplashScreen({ durationMs = 3000 }: SplashScreenProps) {
 							<span className="bg-gradient-to-r from-blue-200 via-white to-blue-200 bg-clip-text text-transparent">
 								mojej fotografii
 							</span>
-							
+
 							{/* Efekt podświetlenia */}
 							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-2xl animate-pulse"></div>
 						</h1>
-						
-						
 					</div>
 				</div>
 

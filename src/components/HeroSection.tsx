@@ -58,15 +58,6 @@ const HeroSection = () => {
 
 	return (
 		<>
-			{/* Preload 3D model dla błyskawicznego ładowania */}
-			<head>
-				<link
-					rel="preload"
-					as="fetch"
-					href="https://yelonmedia.s3.us-east-1.amazonaws.com/Model3D/scene.gltf"
-					crossOrigin="anonymous"
-				/>
-			</head>
 			<section id="home" className="min-h-screen relative overflow-hidden pt-16">
 				{/* Social Media Icons - Prawy górny róg */}
 				<div className="absolute top-24 right-6 z-20 hidden md:flex space-x-3">

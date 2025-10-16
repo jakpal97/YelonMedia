@@ -86,4 +86,12 @@
   <priority>0.3</priority>
 </url>
 
+<!-- Strona 404 -->
+<url>
+  <loc>https://yelonmedia.pl/404</loc>
+  <lastmod>2025-10-14</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.1</priority>
+</url>
+
 </urlset>
