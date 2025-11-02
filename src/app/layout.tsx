@@ -26,16 +26,15 @@ const courierPrime = Courier_Prime({
 	preload: true,
 })
 
-// Ustaw Playfair Display jako główny font elegancki
 const mainFont = {
 	variable: '--font-main',
 	className: 'font-main',
 }
 
 export const metadata: Metadata = {
-	title: 'Yelon Media - Fotograf | Fotografia Portretowa, Ślubna i Eventowa',
+	title: 'Fotograf Tarnowskie Góry - Yelon Media | Śluby, Portrety, Eventy',
 	description:
-		'Profesjonalna fotografia portretowa, ślubna i eventowa. Uwieczniam najpiękniejsze chwile w życiu. Portfolio, cennik i kontakt.',
+		'Profesjonalny fotograf w Tarnowskich Górach i na Śląsku. Sesje ślubne, portretowe i eventowe. ⭐ Zobacz portfolio i umów się na darmową konsultację.',
 	keywords: [
 		'fotograf śląsk',
 		'fotograf ślubny śląsk',
@@ -76,6 +75,60 @@ export const metadata: Metadata = {
 	},
 }
 
+const schemaData = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"@id": "https://yelonmedia.pl",
+	"name": "Yelon Media - Fotograf Tarnowskie Góry",
+	"image": "https://yelonmedia.pl/logoyelon.png",
+	"description": "Profesjonalna fotografia ślubna, portretowa i eventowa w Tarnowskich Górach i na Śląsku",
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Tarnowskie Góry",
+		"addressRegion": "Śląskie",
+		"addressCountry": "PL"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": "50.4457",
+		"longitude": "18.8575"
+	},
+	"url": "https://yelonmedia.pl",
+	"telephone": "+48794081262",
+	"email": "yelon.media@icloud.com",
+	"priceRange": "$$",
+	"areaServed": [
+		{
+			"@type": "City",
+			"name": "Tarnowskie Góry"
+		},
+		{
+			"@type": "City", 
+			"name": "Katowice"
+		},
+		{
+			"@type": "City", 
+			"name": "Gliwice"
+		},
+		{
+			"@type": "City", 
+			"name": "Bytom"
+		},
+		{
+			"@type": "City", 
+			"name": "Zabrze"
+		}
+	],
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+			"opens": "09:00",
+			"closes": "18:00"
+		}
+	]
+}
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -96,6 +149,12 @@ export default function RootLayout({
 				<link rel="dns-prefetch" href="https://yelonmedia.s3.us-east-1.amazonaws.com" />
 				{/* Preconnect do S3 dla szybszego ładowania obrazów */}
 				<link rel="preconnect" href="https://yelonmedia.s3.us-east-1.amazonaws.com" crossOrigin="anonymous" />
+				
+				{/* JSON-LD Schema */}
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+				/>
 			</head>
 			<body
 				className={`${playfairDisplay.className} bg-stone-900 text-stone-100 overflow-x-hidden`}
